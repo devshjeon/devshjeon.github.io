@@ -11,7 +11,7 @@ layout: page
   </h1>
 
   <ul class="post-content pl-0">
-    {% assign post_long_df = site.data.date_format.post.long | default: '%b %e, %Y' %}
+    {% assign post_long_df = site.data.date_format.post.long | default: '%Y-%m-%d' %}
 
     {% for post in page.posts %}
     <li class="d-flex justify-content-between pl-md-3 pr-md-3">
