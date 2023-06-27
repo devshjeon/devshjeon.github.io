@@ -15,7 +15,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
 
 (async () => {
   // ensure directory exists
-  const root = `${process.env.BASE_PATH}/docs`
+  const root = `_site/docs`
 
   const databaseId = process.env.DATABASE_ID
   // TODO has_more
