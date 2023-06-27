@@ -95,8 +95,12 @@ jobs:
 
       - name: Build with Jekyll
         run: |
-          bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
-          cp -R docs _site/
+          if [ -d "docs" ]; then
+            bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+            cp -R docs _site/
+          else
+            bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+          fi
         env:
           JEKYLL_ENV: production
 
