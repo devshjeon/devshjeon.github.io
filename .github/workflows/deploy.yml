@@ -54,7 +54,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: created-files
-          path: "_artifact"
+          path: "_artifact$"
 
   # Build job
   build:
@@ -68,7 +68,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: created-files
-          path: "_artifact"
+          path: "_artifact$"
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
