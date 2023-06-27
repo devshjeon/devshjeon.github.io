@@ -69,10 +69,10 @@ jobs:
         run: |
           if [[ -z "$(ls -A docs)" ]]; then
             echo "No artifacts found. Skipping download."
-            echo "::set-output name=artifacts_exist::false"
+            echo "artifacts_exist=false >> $GITHUB_OUTPUT"
           else
             echo "Artifacts found. Proceeding with download."
-            echo "::set-output name=artifacts_exist::true"
+            echo "artifacts_exist=true >> $GITHUB_OUTPUT"
           fi
 
       - name: Download created files
