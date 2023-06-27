@@ -1,10 +1,10 @@
 on:
   push:
     branches:
-      - local
+      - main
   pull_request:
     branches:
-      - local
+      - main
 
 name: CI
 
