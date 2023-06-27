@@ -1,0 +1,55 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# Sample workflow for building and deploying a Jekyll site to GitHub Pages
+name: Notion sync
+
+on:
+  repository_dispatch:
+    types: [ RUN_WORKFLOW_DISPATCH ]
+
+  # Allows you to run this workflow manually from the Actions tab
+#  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  importer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@master
+
+      - name: Create file
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+      - run: npm install
+      - run: node _scripts/notion-import.js
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          DATABASE_ID: ${{ secrets.DATABASE_ID }}
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update Importer posts
+          branch: local
+          commit_user_name: importer-bot 🤖
+          commit_user_email: devshjeon@gmail.com
+          commit_author: importer-bot 🤖 <devshjeon@github.com>
+
+      - run: gh api /repos/devshjeon/devshjeon/dispatches -f event_type='RUN_WORKFLOW_DISPATCH_NEXT'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
