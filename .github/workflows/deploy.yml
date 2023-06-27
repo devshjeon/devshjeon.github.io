@@ -11,11 +11,11 @@ on:
     types: [ RUN_WORKFLOW_DISPATCH ]
 
   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+#  workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -25,6 +25,22 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  importer:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+
+      - run: npm install
+
+      - run: node _scripts/notion-import.js
+        env:
+          NOTION_TOKEN: $
+          DATABASE_ID: $
   # Build job
   build:
     runs-on: ubuntu-latest
