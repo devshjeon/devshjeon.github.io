@@ -54,7 +54,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: created-files
-          path: "_artifact$"
+          path: "docs"
 
   # Build job
   build:
@@ -68,7 +68,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: created-files
-          path: "_artifact$"
+          path: "docs"
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -84,7 +84,7 @@ jobs:
       - name: Build with Jekyll
         run: |
           bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
-          cp -R _artifact/ _site/
+          cp -R docs _site/
         env:
           JEKYLL_ENV: production
 
