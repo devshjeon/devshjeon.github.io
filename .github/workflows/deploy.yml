@@ -7,8 +7,6 @@
 name: Deploy Jekyll site to Pages
 
 on:
-  push:
-    branches: [ "local" ]
   repository_dispatch:
     types: [ RUN_WORKFLOW_DISPATCH ]
 
