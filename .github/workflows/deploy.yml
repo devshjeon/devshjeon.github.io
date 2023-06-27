@@ -64,7 +64,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Check if artifacts exist
+        id: check-artifacts
+        run: |
+          if [[ -z "$(ls -A docs)" ]]; then
+            echo "No artifacts found. Skipping download."
+            echo "::set-output name=artifacts_exist::false"
+          else
+            echo "Artifacts found. Proceeding with download."
+            echo "::set-output name=artifacts_exist::true"
+          fi
+
       - name: Download created files
+        if: steps.check-artifacts.outputs.artifacts_exist == 'true'
         uses: actions/download-artifact@v2
         with:
           name: created-files
