@@ -7,6 +7,8 @@ nav_exclude: true
 search_exclude: true
 ---
 
-# Focus on writing good documentation
+## 소개글
 
-{: .fs-9 }
+- 프로그래밍과 블록체인 내용을 포스팅하고 있습니다.
+
+

@@ -13,8 +13,8 @@
 # you will see them accessed via {{ site.title }}, {{ site.github_repo }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Archive Blog
-description: 공부 또는 경험한 것들을 정리해 놓은 블로그
+title: Kane's Blog
+description: Easy come, Easy go
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 repository: devshjeon/devshjeon # for github-metadata
