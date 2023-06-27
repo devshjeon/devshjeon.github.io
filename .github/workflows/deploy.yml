@@ -37,7 +37,6 @@ jobs:
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           DATABASE_ID: ${{ secrets.DATABASE_ID }}
-          BASE_PATH: ${{ steps.pages.outputs.base_path }}
 
   # Build job
   build:
