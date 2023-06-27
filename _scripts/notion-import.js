@@ -15,10 +15,9 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
 
 (async () => {
   // ensure directory exists
-  const root = `_site/docs`
+  const root = `docs`
 
   const databaseId = process.env.DATABASE_ID
-  // TODO has_more
   const response = await notion.databases.query({
     database_id: databaseId,
     filter: {
