@@ -21,10 +21,20 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
   const response = await notion.databases.query({
     database_id: databaseId,
     filter: {
-      property: "공개",
-      checkbox: {
-        equals: true,
-      },
+      "and": [
+        {
+          property: "공개",
+          checkbox: {
+            equals: true,
+          },
+        },
+        {
+          property: "배포",
+          checkbox: {
+            equals: true,
+          },
+        },
+      ],
     },
   })
   for (const r of response.results) {
