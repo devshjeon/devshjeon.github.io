@@ -11,7 +11,7 @@ const notion = new Client({
 })
 
 // passing notion client to the option
-const n2m = new NotionToMarkdown({ notionClient: notion, image_to_base64: true });
+const n2m = new NotionToMarkdown({ notionClient: notion, convertImagesToBase64: true });
 
 (async () => {
   // ensure directory exists
