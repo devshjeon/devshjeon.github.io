@@ -184,7 +184,7 @@ parent: ${upFolder}`
 ---`
 
     const folderPath = upFolder ? `${root}/${upUpFolder}/${upFolder}` : `${root}/${upUpFolder}`
-    const imagePath = upFolder ? `${imageRoot}/${upUpFolder}/${upFolder}` : `${imageRoot}/${upUpFolder}`
+    const imagePath = upFolder ? `${imageRoot}/${upUpFolder}/${upFolder}/${title}` : `${imageRoot}/${upUpFolder}/${title}`
     fs.mkdirSync(folderPath, { recursive: true })
 
     const mdBlocks = await n2m.pageToMarkdown(id)
