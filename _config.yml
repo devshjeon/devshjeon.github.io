@@ -103,8 +103,8 @@ heading_anchors: true
 
 # Aux links for the upper right navigation
 aux_links:
-#  "Just the Docs on GitHub":
-#    - "//github.com/just-the-docs/just-the-docs"
+  "resume":
+    - "//devshjeon.github.io/resume"
 
 # Makes Aux links open in a new tab. Default is false
 aux_links_new_tab: false
@@ -130,7 +130,7 @@ footer_content: ""
 
 # Footer last edited timestamp
 last_edit_timestamp: true # show or hide edit time - page must have `last_modified_date` defined in the frontmatter
-last_edit_time_format: "%b %e %Y at %I:%M %p" # uses ruby's time format: https://ruby-doc.org/stdlib-2.7.0/libdoc/time/rdoc/Time.html
+last_edit_time_format: "%Y-%m-%d %H:%M" # uses ruby's time format: https://ruby-doc.org/stdlib-2.7.0/libdoc/time/rdoc/Time.html
 
 
 
