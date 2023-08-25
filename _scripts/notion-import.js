@@ -1,6 +1,7 @@
 const { Client } = require("@notionhq/client")
 const { NotionToMarkdown } = require("notion-to-md")
 const moment = require("moment")
+const moment_timezone = require("moment-timezone")
 const path = require("path")
 const fs = require("fs")
 const https = require("https")
@@ -150,10 +151,10 @@ function replaceUrl(body, imageUrls, s3Urls) {
     let hasChild = r.properties?.["메인"]?.["checkbox"] || false
 
     // 작성일
-    let date = moment(r.created_time).format("YYYY-MM-DD HH:mm")
+    let date = moment(r.created_time).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm")
     let pDate = r.properties?.["최종수정일"]?.["last_edited_time"]
     if (pDate) {
-      date = moment(pDate).format("YYYY-MM-DD HH:mm")
+      date = moment(pDate).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm")
     }
 
     let header = `---
