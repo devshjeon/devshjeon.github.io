@@ -160,7 +160,7 @@ function replaceUrl(body, imageUrls, s3Urls) {
 layout: default
 title: ${title}
 has_children: ${hasChild}
-date: ${date}`
+last_modified_date: ${date}`
 
     if (navOrder) {
       header += `
