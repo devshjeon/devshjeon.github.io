@@ -150,10 +150,10 @@ function replaceUrl(body, imageUrls, s3Urls) {
     let hasChild = r.properties?.["메인"]?.["checkbox"] || false
 
     // 작성일
-    let date = moment(r.created_time).format("YYYY-MM-DD")
-    let pDate = r.properties?.["작성일"]?.["date"]?.["start"]
+    let date = moment(r.created_time).format("YYYY-MM-DD HH:mm")
+    let pDate = r.properties?.["작성일"]?.["last_edited_time"]?.["start"]
     if (pDate) {
-      date = moment(pDate).format("YYYY-MM-DD")
+      date = moment(pDate).format("YYYY-MM-DD HH:mm")
     }
 
     let header = `---
