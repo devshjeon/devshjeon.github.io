@@ -151,7 +151,7 @@ function replaceUrl(body, imageUrls, s3Urls) {
 
     // 작성일
     let date = moment(r.created_time).format("YYYY-MM-DD HH:mm")
-    let pDate = r.properties?.["작성일"]?.["last_edited_time"]?.["start"]
+    let pDate = r.properties?.["최종수정일"]?.["last_edited_time"]
     if (pDate) {
       date = moment(pDate).format("YYYY-MM-DD HH:mm")
     }
