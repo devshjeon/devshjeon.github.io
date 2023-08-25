@@ -42,7 +42,7 @@ function initNav() {
   const mainHeader = document.getElementById('main-header');
   const menuButton = document.getElementById('menu-button');
   
-  disableHeadStyleSheet();
+  // disableHeadStyleSheet();
 
   jtd.addEvent(menuButton, 'click', function(e){
     e.preventDefault();
