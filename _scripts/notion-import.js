@@ -66,7 +66,8 @@ async function downloadImages(path, imageUrls) {
   let number = 1
   const s3Urls = []
   for (let url of imageUrls) {
-    const fileName = `${path}/${number}.png`
+    const ext = imageUrls[0]?.split(".")?.pop()?.split("?")[0] || "png"
+    const fileName = `${path}/${number}.${ext}`
     await downloadImage(url, fileName)
 
     const fileContent = await fs.promises.readFile(fileName)
