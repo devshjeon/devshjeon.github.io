@@ -202,7 +202,7 @@ parent: ${upFolder}`
     }
 
     //writing to file
-    const fTitle = navOrder ? `${navOrder}.${title}.md` : `${title}.md`
+    const fTitle = `${title}.md`
     fs.writeFile(path.join(folderPath, fTitle), header + body, (err) => {
       if (err) {
         console.log(err)
