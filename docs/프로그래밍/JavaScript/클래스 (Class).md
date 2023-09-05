@@ -9,7 +9,7 @@ parent: JavaScript
 ---
 # 선행
 
-- [프로토타입 (Prototype)](https://devshjeon.github.io/docs/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/9.%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85%20(Prototype))
+- [프로토타입 (Prototype)](https://devshjeon.github.io/docs/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85%20(Prototype))
 
 # 요약
 
