@@ -2,7 +2,7 @@
 
 // prettier-ignore
 $body-font-family: system-ui, -apple-system, blinkmacsystemfont, "Segoe UI",
-  roboto, "Helvetica Neue", arial, sans-serif !default;
+roboto, "Helvetica Neue", arial, sans-serif !default;
 $mono-font-family: "SFMono-Regular", menlo, consolas, monospace !default;
 $root-font-size: 16px !default; // DEPRECATED: previously base font-size for rems
 $body-line-height: 1.4 !default;
@@ -63,17 +63,17 @@ $red-300: #dd2e2e !default;
 $spacing-unit: 1rem; // 1rem == 16px
 
 $spacers: (
-  sp-0: 0,
-  sp-1: $spacing-unit * 0.25,
-  sp-2: $spacing-unit * 0.5,
-  sp-3: $spacing-unit * 0.75,
-  sp-4: $spacing-unit,
-  sp-5: $spacing-unit * 1.5,
-  sp-6: $spacing-unit * 2,
-  sp-7: $spacing-unit * 2.5,
-  sp-8: $spacing-unit * 3,
-  sp-9: $spacing-unit * 3.5,
-  sp-10: $spacing-unit * 4,
+        sp-0: 0,
+        sp-1: $spacing-unit * 0.25,
+        sp-2: $spacing-unit * 0.5,
+        sp-3: $spacing-unit * 0.75,
+        sp-4: $spacing-unit,
+        sp-5: $spacing-unit * 1.5,
+        sp-6: $spacing-unit * 2,
+        sp-7: $spacing-unit * 2.5,
+        sp-8: $spacing-unit * 3,
+        sp-9: $spacing-unit * 3.5,
+        sp-10: $spacing-unit * 4,
 ) !default;
 $sp-1: map-get($spacers, sp-1) !default; // 0.25 rem == 4px
 $sp-2: map-get($spacers, sp-2) !default; // 0.5  rem == 8px
@@ -96,22 +96,22 @@ $border-color: $grey-lt-100 !default;
 
 $gutter-spacing: $sp-6 !default;
 $gutter-spacing-sm: $sp-4 !default;
-$nav-width: 16.5rem !default;
-$nav-width-md: 15.5rem !default;
+$nav-width: 19rem !default;
+$nav-width-md: 18rem !default;
 $nav-list-item-height: $sp-6 !default;
 $nav-list-item-height-sm: $sp-8 !default;
 $nav-list-expander-right: true;
 $content-width: 50rem !default;
 $header-height: 3.75rem !default;
-$search-results-width: $content-width - $nav-width !default;
+$search-results-width: 100% !default;
 $transition-duration: 400ms;
 
 // Media queries in pixels
 
 $media-queries: (
-  xs: 20rem,
-  sm: 31.25rem,
-  md: $content-width,
-  lg: $content-width + $nav-width,
-  xl: 87.5rem,
+        xs: 20rem,
+        sm: 31.25rem,
+        md: $content-width,
+        lg: $content-width + $nav-width,
+        xl: 87.5rem,
 ) !default;
