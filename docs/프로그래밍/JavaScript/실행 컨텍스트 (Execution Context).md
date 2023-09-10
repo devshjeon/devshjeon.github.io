@@ -3,121 +3,186 @@ layout: default
 title: 실행 컨텍스트 (Execution Context)
 has_children: false
 last_modified_date: 2023-08-26 15:55
-nav_order: 3
+nav_order: 4
 grand_parent: 프로그래밍
 parent: JavaScript
 ---
 # 선행
 
-- [스코프 (Scope)](https://devshjeon.github.io/docs/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/2.%EC%8A%A4%EC%BD%94%ED%94%84%20(Scope)/)
+
+---
+
+- [스코프 (Scope)](https://devshjeon.github.io/docs/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/%EC%8A%A4%EC%BD%94%ED%94%84%20(Scope))
+
+# 키워드
+
+
+---
+
+- call stack (LIFO)
+- lexical environment (block scope)
+- variable environment (functional scope)
+- record environment (hoisting)
+- outer reference environment (scope chain)
 
 # 요약
 
+
+---
+
 - 실행 컨텍스트는 함수가 실행될 때 함수를 구성하는 식별자(변수, 함수 등)가 수집되는 공간
-- 자바스크립트 엔진은 LIFO 구조의 호출 스택을 사용하여 실행 컨텍스트를 추적
-- 실행 컨텍스트는 초기 정보를 저장하는 `Variable Environment`와 초기 정보 저장 후 코드가 실행됨에 따라 최신값이 반영되는 `Lexical Environment`로 구성
-- `Lexical Environment`는 `Environment Record`와 `Outer Environment Reference`로 구성된다.
-- `Environment Record`에 컨텍스트의 식별자 정보가 저장되고 이러한 과정을 `호이스팅(Hoisting)`이라 한다.
-- `Outer Environment Reference`는 현재 실행 컨텍스트의 부모 실행 컨텍스트를 참조하는 포인터로, 변수가 참조될 수 있는 범위가 결정되는 방식은 현재 실행 컨텍스트부터 최대 전역 실행 컨텍스트까지 가장 가까운 변수를 찾는 방식이다.
+- 자바스크립트 엔진은 LIFO 구조의 호출 스택에 실행 컨텍스트를 적재
+- 실행 컨텍스트는 Lexical Environment와 Variable Environment로 구성되고 Lexical Environment과 Variable Environment는 Environment Record와 Outer Reference Environment로 구성된다.
+- Environment Record에 식별자 정보가 저장되는 과정을 **호이스팅**이라 한다.
+- Outer Reference Environment는 상위 Lexical Environment와 연결되어 참조가 가능한데, 이것은 **스코프 체인**이라 한다.
+- Lexical Environment와 Variable Environment는 ES6부터 등장한 let, const가 var와 비교해서 스코프 및 변수 생성 단계에 차이가 있어 구분되었다.
 
 # 실행 컨텍스트 (Execution Context)란?
 
 
-실행 컨텍스트는 자바스크립트가 실행되는 환경으로, 변수 및 함수에 전달된 인수 등 코드가 실행되는데 필요한 정보들이 저장되어 있다.
+---
 
 
-실행 컨텍스트 종류는 **전역 실행 컨텍스트 (global execution context), 함수 실행 컨텍스트 (functional execution context)**가 있다.
+자바스크립트 코드가 실행되는 환경으로, 코드를 실행하기 위해 필요한 변수 및 함수에 전달된 인수 등이 저장되어 있다.
 
 
-전역 실행 컨텍스트는 스크립트가 처음 실행되기 시작할 때 생성되며, 자바스크립트에서 전역 범위를 나타낸다. 
+# EC 종류
 
 
-함수 실행 컨텍스트는 함수가 호출될 때마다 생성되며 함수의 로컬 범위를 나타낸다.
+---
 
 
-블록 스코프의 경우에는 별개의 실행 컨텍스트를 생성하지 않는다.
+EC 종류는 다음 3가지 경우에 생성된다.
 
+- 전역 실행 컨텍스트 (global execution context); 자바스크립트 최초 실행 시
+- 함수 실행 컨텍스트 (functional execution context); 함수 호출 시
+- eval 실행 컨텍스트 (eval execution context); eval 함수 호출시
 
 # 호출 스택 (Call Stack)
 
 
-현재 어떤 함수가 동작 중인지, 다음에 어떤 함수가 호출될 예정인지 등을 제어하는 자료구조
+---
 
 
-자바스크립트 엔진은 모든 컨텍스트를 추적하기 위해 호출 스택을 사용한다.
+자바스크립트 엔진은 모든 EC를 추적하기 위해 사용중인 EC를 호출 스택에 적재한다.
 
 
-호출 스택은 LIFO 구조로 최초 전역 실행 컨텍스트가 먼저 호출 스택에 적재되고 함수가 호출될 때마다 호출 스택에 적재하고 함수 실행이 완료되면 해당 컨텍스트를 호출 스택에서 제거한다.
+자바스크립트 코드를 실행하면 최초로 전역 EC가 호출 스택에 적재되고, 함수가 호출될 때마다 생성된 함수 EC가 호출 스택에 적재되고, 함수 실행이 완료되면 해당 EC를 호출 스택에서 제거한다.
 
 
-![call_stack_u2vvsi.jpg](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/%EC%8B%A4%ED%96%89%20%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%20%28Execution%20Context%29/1.png)
+![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-09-08_22.46.00.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/a90ac448-cf34-4328-977a-0c44e854590d/4aebb246-1e78-46c7-be3a-46fc82374d55/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-09-08_22.46.00.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230910%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230910T031427Z&X-Amz-Expires=3600&X-Amz-Signature=70b1b3192c1d4a561012b5264d802a827175abe575df4bfa24b6f58fe84fa498&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
-# 실행 컨텍스트 구성
+# EC 구성 (ES6+)
 
 
-실행 컨텍스트는 **Lexical Environment**와 **Variable Environment**라는 컴포넌트로 구성되어 있다. 초기 Lexical Environment는 Variable Environment의 복사본으로 이후 자바스크립트 코드에 따라 참조가 변경된다.
+---
 
 
-# Variable Environment
+ES6 부터 EC 구성 성분이 변경되어 lexical environment(이하 LE)와 variable environment(이하 VE)로 구성되고 각각 environment record(이하 ER)와 outer reference environment(이하 ORE) 정보를 포함한다.
 
 
-실행 컨텍스트를 구성하는 환경 정보들을 모아 사전처럼 구성한 객체
+![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-09-08_22.46.22.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/a90ac448-cf34-4328-977a-0c44e854590d/57040505-6c10-45b6-8f9b-f09ccbfca702/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-09-08_22.46.22.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230910%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230910T031427Z&X-Amz-Expires=3600&X-Amz-Signature=3776e8fc48b1c5214a7a94ba059a0dc80db6239344dd1eb3588eea0921786eb8&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
-식별자 정보를 수집하는 용도로 사용하는 객체로 값의 변화에 대해 반영되지 않는다.
+# Environment Record (Hoisting)
 
 
-# Lexical Environment
+---
 
 
-실행 컨텍스트를 구성하는 환경 정보들을 모아 사전처럼 구성한 객체
+EC 생성 시 코드 실행에 필요한 식별자(함수, 변수 등) 정보를 저장하는데, 이러한 과정을 호이스팅이라 한다.
 
 
-자바스크립트 코드에서 변수나 함수 등의 식별자를 정의하는 데 사용하는 객체로 코드가 실행되어 값의 변화가 발생하면 변경된 값이 반영되어 식별자의 데이터 추적에 사용된다.
+# Outer Reference Environment (Scope Chain)
 
 
-Lexical Environment는 식별자와 참조 혹은 값을 기록하는 `Environment Record`와 `outer`라는 부모 Lexical Environment를 참조하는 포인터로 구성된다. `outer`는 중첩된 자바스크립트 코드에서 **스코프 탐색**을 하기 위해 사용된다.
+---
 
 
-## Environment Record
+ORE는 상위 스코프의 LE를 가리킨다.
 
 
-컨텍스트의 식별자 정보를 저장하는 객체로 현재 컨텍스트의 식별자 정보를 수집해서 environment record에 저장하는 과정을 호이스팅(Hoisting)이라고 한다.
+ORE에 의해 상위 스코프의 식별자 정보에 접근할 수 있는 스코프 체인이 생성되었다.
 
 
-호이스팅이 진행되면 선언된 정보(함수, var, let, const, 클래스 등)가 environment record에 수집된다. 
+하지만, ORE는 단방향 Linked List로 하위 스코프에서 상위 스코프 참조만 가능하다.
 
 
-## Outer Environment Reference
+# Lexical Environment vs Variable Environment
 
 
-현재 실행 컨텍스트의 부모(호출 스택의 아래) 실행 컨텍스트를 참조한다.
+---
 
 
-outer environment reference에 의해 스코프 체인이 생성된다. (스코프는 변수의 유효 범위로, 실행 컨텍스트가 수집한 정보만 접근할 수 있기 때문에 스코프는 실행 컨텍스트에 의해 결정된다)
+LE와 VE는 스코프와 변수의 생성 차이 때문에 구분되었다.
 
 
-스코프 체인을 통해서 현재 실행 컨텍스트에서 최대 전역 실행 컨텍스트까지 가장 가까운 실행 컨텍스트의 수집 정보에 접근할 수 있다. (shadowing)
+### 스코프
 
 
-outer environment reference를 통해 최대 전역 실행 컨텍스트의 수집 정보(식별자)에 접근할 수 있다. (내부에서 외부로는 접근이 가능, 외부에서 내부로는 접근이 불가, 변수의 유효 범위(스코프)가 결정)
+변수를 선언하는데 사용하는 키워드 `var`와 ES6 부터 등장한 `let`, `const` 키워드의 가장 큰 차이점은 스코프이다.
+
+- `var`: functional scope
+- `let`, `const`: block scope
+
+EC에서 스코프를 컨트롤 하기 위해서는 이전에 사용했던 변수를 저장하는 방식으로는 한계가 있다.
 
 
-# 참조
+따라서, `var`로 선언한 변수에 대해서는 VE에 저장하고 `let`, `const`로 선언한 변수에 대해서는 LE에 저장시켜서 관리하도록 분리시켰다. 
 
 
-[https://velog.io/@shroad1802/environment-record#object-environment-record](https://velog.io/@shroad1802/environment-record#object-environment-record)
+그리고 하나의 EC 안에 여러 블록이 있으면 블록마다 LE를 생성해서 계층 스코프를 구성해서 LE를 관리한다.
 
 
-[https://babscraig.com/javascript-execution-context-call-stack-event-loop](https://babscraig.com/javascript-execution-context-call-stack-event-loop)
+```javascript
+function foo() {
+  let a = 'a';
+  var b = 'b';
+
+  if (true) {
+    let c = 'c';
+    var d = 'd';
+  }
+}
+```
 
 
-[https://blog.bitsrc.io/understanding-execution-context-and-execution-stack-in-javascript-1c9ea8642dd0](https://blog.bitsrc.io/understanding-execution-context-and-execution-stack-in-javascript-1c9ea8642dd0)
+위 코드에 대한 EC 구조는 다음과 같다.
 
 
-[https://262.ecma-international.org/6.0/#sec-lexical-environments](https://262.ecma-international.org/6.0/#sec-lexical-environments)
+![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-09-08_23.10.11.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/a90ac448-cf34-4328-977a-0c44e854590d/0e0c91c6-b884-4566-98b8-0ce395c74539/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-09-08_23.10.11.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230910%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230910T031427Z&X-Amz-Expires=3600&X-Amz-Signature=aad3ade640ff56c54709e3633ff121e7b0756082cb4d1e33f3e9d3d85d162bd2&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
-[https://diganta.hashnode.dev/10-lexical-environments-execution-context-scope-and-hoisting-in-javascript-ck6id2pdo00dmd9s1siz1jasg](https://diganta.hashnode.dev/10-lexical-environments-execution-context-scope-and-hoisting-in-javascript-ck6id2pdo00dmd9s1siz1jasg)
+### 변수 생성
+
+
+변수 생성은 다음 3단계로 진행된다.
+
+1. 선언 단계 (Declaration Phase): 변수를 EC의 LE에 저장 (이 과정을 호이스팅이(hoisting)라 한다)
+2. 초기화 단계 (Initialization Phase): LE에 저장된 변수를 메모리에 할당 (할당 후 변수는 `undefined`로 초기화)
+3. 할당 단계 (Assignment Phase): 변수에 값을 할당하는 단계 (`undefined`에서 값으로 변경)
+
+`var` 키워드는 선언과 초기화 단계가 하나의 단계처럼 동시에 발생하고, `let`, `const` 키워드는 순차적으로 진행되고, 선언과 초기화 단계 사이에 TDZ(Temporal Dead Zone)이라고 부르는 영역의 영향을 받아 초기화 단계 이전에 해당 변수를 참조하려고 시도하면 참조에러가 발생한다.
+
+
+이 같은 차이점 때문에 동작 방식을 다르게 해야 하고 따라서 LE와 VE를 구분했다.
+
+
+# reference
+
+
+---
+
+
+[https://m.blog.naver.com/dlaxodud2388/222655214381](https://m.blog.naver.com/dlaxodud2388/222655214381)
+
+
+[https://es5.github.io/#x10](https://es5.github.io/#x10)
+
+
+[https://stackoverflow.com/questions/20139050/what-really-is-a-declarative-environment-record-and-how-does-it-differ-from-an-a](https://stackoverflow.com/questions/20139050/what-really-is-a-declarative-environment-record-and-how-does-it-differ-from-an-a)
+
+
+[https://stackoverflow.com/questions/23948198/variable-environment-vs-lexical-environment](https://stackoverflow.com/questions/23948198/variable-environment-vs-lexical-environment)
 
