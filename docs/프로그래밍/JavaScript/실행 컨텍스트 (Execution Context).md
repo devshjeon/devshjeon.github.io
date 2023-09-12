@@ -70,7 +70,7 @@ EC 종류는 다음 3가지 경우에 생성된다.
 자바스크립트 코드를 실행하면 최초로 전역 EC가 호출 스택에 적재되고, 함수가 호출될 때마다 생성된 함수 EC가 호출 스택에 적재되고, 함수 실행이 완료되면 해당 EC를 호출 스택에서 제거한다.
 
 
-![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-09-08_22.46.00.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/a90ac448-cf34-4328-977a-0c44e854590d/4aebb246-1e78-46c7-be3a-46fc82374d55/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-09-08_22.46.00.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230912%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230912T060213Z&X-Amz-Expires=3600&X-Amz-Signature=32cbfaf785ac4a2e7a2d8db164d0f0a0adf045a198613e0dfdff1d43b410556b&X-Amz-SignedHeaders=host&x-id=GetObject)
+![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-09-08_22.46.00.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/%EC%8B%A4%ED%96%89%20%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%20%28Execution%20Context%29/1.png)
 
 
 # EC 구성 (ES6+)
@@ -82,7 +82,7 @@ EC 종류는 다음 3가지 경우에 생성된다.
 ES6 부터 EC 구성 성분이 변경되어 lexical environment(이하 LE)와 variable environment(이하 VE)로 구성되고 각각 environment record(이하 ER)와 outer reference environment(이하 ORE) 정보를 포함한다.
 
 
-![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-09-08_22.46.22.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/a90ac448-cf34-4328-977a-0c44e854590d/57040505-6c10-45b6-8f9b-f09ccbfca702/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-09-08_22.46.22.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230912%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230912T060213Z&X-Amz-Expires=3600&X-Amz-Signature=ba715c526bdcfa770cc7316e76300459e01664e953c1af683486a18c516b3479&X-Amz-SignedHeaders=host&x-id=GetObject)
+![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-09-08_22.46.22.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/%EC%8B%A4%ED%96%89%20%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%20%28Execution%20Context%29/2.png)
 
 
 # Environment Record (Hoisting)
@@ -151,7 +151,7 @@ function foo() {
 위 코드에 대한 EC 구조는 다음과 같다.
 
 
-![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-09-08_23.10.11.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/a90ac448-cf34-4328-977a-0c44e854590d/0e0c91c6-b884-4566-98b8-0ce395c74539/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-09-08_23.10.11.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230912%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230912T060213Z&X-Amz-Expires=3600&X-Amz-Signature=923d38af7e3589cfc07abdbe33a4727bbc3812df9f254806bb887286390f3096&X-Amz-SignedHeaders=host&x-id=GetObject)
+![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-09-08_23.10.11.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/%EC%8B%A4%ED%96%89%20%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%20%28Execution%20Context%29/3.png)
 
 
 ### 변수 생성
