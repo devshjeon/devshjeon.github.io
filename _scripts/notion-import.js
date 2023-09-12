@@ -23,7 +23,7 @@ const s3 = new AWS.S3()
 
 // passing notion client to the option
 const n2m = new NotionToMarkdown({ notionClient: notion })
-const regexPattern = "https:\/\/s3.us-west-2.amazonaws.com.+x-id=GetObject"
+const regexPattern = "https:\/\/.+s3.us-west-2.amazonaws.com.+x-id=GetObject"
 
 function findImageUrl(str) {
   const regex = new RegExp(regexPattern, "g")
