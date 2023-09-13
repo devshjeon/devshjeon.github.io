@@ -3,17 +3,23 @@ layout: default
 title: 스코프 (Scope)
 has_children: false
 last_modified_date: 2023-08-24 14:41
-nav_order: 2
+nav_order: 4
 grand_parent: 프로그래밍
 parent: JavaScript
 ---
 # 요약
+
+
+---
 
 - 스코프란 변수(또는 객체)를 참조할 수 있는 범위 개념
 - 전역, 상위, 하위와 같이 계층 구조로 이루어져 있고, 하위 스코프는 상위 스코프에 접근이 가능
 - 범위에 따라 전역, 지역(함수, 블록) 스코프로 나뉘고, 시점에 따라 렉시컬, 동적 스코프로 나뉜다.
 
 # 스코프 (scope)란?
+
+
+---
 
 
 자바스크립트에서 스코프(scope)란 런타임 동안 코드 영역에서 식별자(변수, 함수 등 객체)에 대한 참조 가능한 범위로, 범위와 시점에 따라 여러 종류가 있다.
@@ -26,6 +32,9 @@ parent: JavaScript
 
 
 # 스코프 종류
+
+
+---
 
 
 ### 범위
@@ -41,6 +50,9 @@ parent: JavaScript
 - 동적 스코프 (dynamic scope, 실행 시점)
 
 # 전역 스코프 (global scope)
+
+
+---
 
 
 함수 외부에 선언된 영역으로 자바스크립트 런타임 동안 단 하나의 전역 스코프가 존재한다.
@@ -70,6 +82,9 @@ console.log(local); // ReferenceError; 지역 변수 참조 불가능
 # 함수 스코프 (function scope)
 
 
+---
+
+
 함수가 실행될 때 형성되는 영역으로 함수 스코프에 선언된 변수는 전역에서 참조할 수 없다. (반면, 전역에서 생성된 변수는 함수에서 참조가 가능하다)
 
 
@@ -97,6 +112,9 @@ console.log(name2); // kane; 블록 스코프 밖에서 참조 가능
 # 블록 스코프 (block scope)
 
 
+---
+
+
 ECMAScript 6부터 키워드 `let`, `const` 가 도입되면서 모든 코드 블록(함수, if, while, try/catch 등) 내에서 선언되는 변수는 블록 내에서만 참조가 가능하다.
 
 
@@ -116,6 +134,9 @@ console.log(name4); // ReferenceError; 블록 스코프 밖에서는 참조 불�
 
 
 # 렉시컬 스코프 (lexical scope)
+
+
+---
 
 
 함수를 **선언**한 시점에 생성되는 스코프로, 이때 상위 스코프가 결정된다.
@@ -145,6 +166,9 @@ bar(); // kane
 # 동적 스코프 (dynamic scope)
 
 
+---
+
+
 함수가 **호출**되는 시점에 생성되는 스코프로, 이때 상위 스코프가 결정된다.
 
 
@@ -152,6 +176,9 @@ bar(); // kane
 
 
 # 참조
+
+
+---
 
 
 [https://developer.mozilla.org/ko/docs/Glossary/Scope](https://developer.mozilla.org/ko/docs/Glossary/Scope)

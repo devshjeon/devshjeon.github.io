@@ -9,9 +9,15 @@ parent: JavaScript
 ---
 # 선행
 
+
+---
+
 - [프로토타입 (Prototype)](https://devshjeon.github.io/docs/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85%20(Prototype))
 
 # 요약
+
+
+---
 
 - 어떤 공통된 속성이나 기능을 정의한 추상적인 개념
 - 클래스 자체에서만 접근 가능한 static 멤버와 인스턴스에서 직접 사용할 수 있는 프로토타입 객체가 있다.
@@ -19,6 +25,9 @@ parent: JavaScript
 - ES5까지는 생성자 함수를 이용해서 상속관계를 정의했지만, ES6부터 `class` 키워드가 등장하면서 사용이 간편해졌다.
 
 # 클래스 (Class)란?
+
+
+---
 
 
 클래스는 어떤 공통된 속성이나 기능을 정의한 추상적인 개념이고, 이 클래스에 속한 객체를 인스턴스라 한다.
@@ -31,6 +40,9 @@ parent: JavaScript
 
 
 # 클래스 상속
+
+
+---
 
 
 클래스 간 상속이 가능한 계층구조를 정의할 수 있다.
@@ -175,6 +187,9 @@ class Employee extends Person {
 
 
 # 참조
+
+
+---
 
 
 [https://www.inflearn.com/course/lecture?courseSlug=핵심개념-javascript-flow&unitId=89260&tab=curriculum](https://www.inflearn.com/course/lecture?courseSlug=%ED%95%B5%EC%8B%AC%EA%B0%9C%EB%85%90-javascript-flow&unitId=89260&tab=curriculum)

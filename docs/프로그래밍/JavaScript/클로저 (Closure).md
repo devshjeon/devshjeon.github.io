@@ -3,22 +3,31 @@ layout: default
 title: 클로저 (Closure)
 has_children: false
 last_modified_date: 2023-08-26 15:55
-nav_order: 7
+nav_order: 8
 grand_parent: 프로그래밍
 parent: JavaScript
 ---
 # 선행
 
-- [가비지 컬렉터 (Garbage Collector)](https://devshjeon.github.io/docs/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/2.%EA%B0%80%EB%B9%84%EC%A7%80%20%EC%BB%AC%EB%A0%89%ED%84%B0%20(Garbage%20Collector))
-- [실행 컨텍스트 (Execute Context)](https://devshjeon.github.io/docs/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/3.%EC%8B%A4%ED%96%89%20%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%20(Execution%20Context))
+
+---
+
+- [가비지 컬렉터 (Garbage Collector)](https://devshjeon.github.io/docs/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/%EA%B0%80%EB%B9%84%EC%A7%80%20%EC%BB%AC%EB%A0%89%ED%84%B0%20(Garbage%20Collector))
+- [실행 컨텍스트 (Execute Context)](https://devshjeon.github.io/docs/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/%EC%8B%A4%ED%96%89%20%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%20(Execution%20Context))
 
 # 요약
+
+
+---
 
 - 컨택스트 A에서 선언한 변수 a를 참조하는 내부함수 B를 A의 외부로 전달할 경우, A가 종료된 이후에도 a가 사라지지 않는 현상
 - 함수 종료 후에도 사라지지 않는 지역변수를 만들 수 있다.
 - 사라지지 않는 변수를 생성하기 때문에 메모리 누수가 발생할 수 있다.
 
 # 클로저 (Closure)란?
+
+
+---
 
 
 클로저는 함수와 그 함수가 선언됐을 때의 lexical environment의 조합이다.
@@ -49,7 +58,7 @@ inner(); // 10
 이미 종료된 함수의 변수에 접근할 수 있다는 의미는 GC가 해당 변수를 메모리에 반환하지 않았다는 의미이고, 이는 곧 루트 기준으로 해당 변수가 참조된다는 의미이다.
 
 
-`outerFunc` 함수가 호출되면 도달할 수ㅅ있느는 참조는과다음음같다.
+`outerFunc` 함수가 호출되면 도달할 수 있는 참조는 다음과 같다.
 
 
 ```mermaid
@@ -125,6 +134,9 @@ console.log(kane.status) // logout
 # 메모리 누수
 
 
+---
+
+
 위의 예제에서 보았듯이 클로저를 사용하면 내부 변수를 참조하므로 메모리에서 삭제되지 않는다. 따라서, 사용이 끝났으면 명시적으로 `null` 값을 덮어써서 GC 수행 과정에서 메모리 해제를 해주어야 메모리 누수를 막을 수 있다.
 
 
@@ -148,6 +160,9 @@ setupClickHandler();
 
 
 # 참조
+
+
+---
 
 
 [http://dmitrysoshnikov.com/ecmascript/chapter-6-closures/](http://dmitrysoshnikov.com/ecmascript/chapter-6-closures/)
