@@ -3,16 +3,22 @@ layout: default
 title: this
 has_children: false
 last_modified_date: 2023-08-26 15:55
-nav_order: 4
+nav_order: 7
 grand_parent: 프로그래밍
 parent: JavaScript
 ---
 # 선행
 
-- [스코프 (Scope)](https://devshjeon.github.io/docs/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/2.%EC%8A%A4%EC%BD%94%ED%94%84%20(Scope)/)
-- [실행 컨텍스트 (Execute Context)](https://devshjeon.github.io/docs/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/3.%EC%8B%A4%ED%96%89%20%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%20(Execution%20Context))
+
+---
+
+- [스코프 (Scope)](https://devshjeon.github.io/docs/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/%EC%8A%A4%EC%BD%94%ED%94%84%20(Scope))
+- [실행 컨텍스트 (Execute Context)](https://devshjeon.github.io/docs/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/%EC%8B%A4%ED%96%89%20%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%20(Execution%20Context))
 
 # 요약
+
+
+---
 
 - `this`는 함수를 호출하는 방식에 따라 바인딩 되는 객체가 달라진다.
 - 일반적으로 함수 호출 시 `this`는 전역 객체를 나타낸다.
@@ -22,6 +28,9 @@ parent: JavaScript
 - 생성자 함수의 경우
 
 # this 란?
+
+
+---
 
 
 실행 컨텍스트가 생성될 때 (일반적으로 함수 호출 시) 바인딩되는 객체로, 함수를 호출하는 방식에 따라 `this`에 바인딩 되는 객체가 달라진다.
@@ -276,6 +285,9 @@ console.log(foo.a, foo.b);
 
 
 # 참조
+
+
+---
 
 
 [http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/](http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/)

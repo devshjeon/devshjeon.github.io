@@ -9,16 +9,25 @@ parent: JavaScript
 ---
 # 키워드
 
+
+---
+
 - 객체의 공통된 속성을 정의
 - 메모리 사용 효율
 - 프로토타입 체이닝
 
 # 요약
 
+
+---
+
 - 프로토타입이란 어떤 객체의 공통된 속성을 정의한 객체로 인스턴스 생성 시 참조변수를 통해 프로터타입 객체에 접근하여 메모리 사용 효율을 높일 수 있다.
 - 객체 인스턴스 생성 시, 프로토타입이라는 생성자 함수에서 공통으로 사용하는 변수 및 메서드를 갖고있는 객체를 참조하는 변수 `__proto__` 를 추가해서 인스턴스를 생성한다.
 
 # 프로토타입 (Prototype)이란?
+
+
+---
 
 
 프로토타입은 객체를 만드는 과정에서 부모가 되는 객체를 의미하고 자바스크립트의 모든 객체는 자신의 부모 역할을 하는 객체와 연결되어 있다. 
@@ -28,6 +37,9 @@ parent: JavaScript
 
 
 # 프로토타입 구조
+
+
+---
 
 
 프로토타입 생성자의 prototype과 프로토타입 생성자를 `new` 연산자를 통해 생성한 인스턴스의 [[Prototype]] 속성은 같은 객체를 참조한다.
@@ -75,6 +87,9 @@ const kaneClone4 = new Person.prototype.constructor('kane'); // 생성자함수�
 # 원시 타입의 확장
 
 
+---
+
+
 ### 숫자 리터럴
 
 
@@ -90,6 +105,9 @@ const kaneClone4 = new Person.prototype.constructor('kane'); // 생성자함수�
 # 메서드 상속
 
 
+---
+
+
 프로토타입을 사용하면 공통된 속성 및 메서드를 인스턴스를 생성할 때마다 메모리에 할당할 필요 없이 프로토타입 객체를 참조하는 변수를 통해 프로토타입 객체에 접근할 수 있으므로 메모리 사용 효율을 높일 수 있다.
 
 
@@ -97,6 +115,9 @@ const kaneClone4 = new Person.prototype.constructor('kane'); // 생성자함수�
 
 
 # 프로토타입 체이닝
+
+
+---
 
 
 프로토타입도 생성자 함수를 통해 생성된 객체이다. 그렇다면 어떤 생성자 함수를 사용한 것일까? 
@@ -147,6 +168,9 @@ flowchart TD
 
 
 # 참조
+
+
+---
 
 
 [https://www.inflearn.com/course/lecture?courseSlug=핵심개념-javascript-flow&unitId=89259&tab=curriculum](https://www.inflearn.com/course/lecture?courseSlug=%ED%95%B5%EC%8B%AC%EA%B0%9C%EB%85%90-javascript-flow&unitId=89259&tab=curriculum)

@@ -9,12 +9,18 @@ parent: JavaScript
 ---
 # 키워드
 
+
+---
+
 - 메모리 관리
 - 도달 가능성
 - 루트
 - mark-and-sweep
 
 # 요약
+
+
+---
 
 - GC는 자바스크립트 엔진에서 자동으로 수행된다. (개발자가 임의로 실행하거나 막을 수 없다)
 - 자바스크립트에서 도달 가능성을 기준으로 메모리를 관리한다.
@@ -24,13 +30,16 @@ parent: JavaScript
 # 가비지 컬렉터 (Garbage Collector)란?
 
 
+---
+
+
 가비지 컬렉터는 자바스크립트 엔진 내에서 자동으로 메모리 관리를 수행하고, 개발자가 임의로 실행하거나 막을 수 없다.
 
 
 자바스크립트는 **도달 가능성**이라는 개념을 도입해서 이를 기준으로 객체의 삭제 여부를 결정한다.
 
 
-## 도달 가능성
+### 도달 가능성
 
 
 자바스크립트는 도달 가능성(Reachability)라는 개념을 도입하여 메모리를 관리한다.
@@ -48,13 +57,13 @@ parent: JavaScript
 위의 값들을 **루트** 라고 부른다.
 
 
-> 루트가 참조하는 값이나 체이닝으로 루트에서 참조할 수 있는 값은 도달 가능한 값이 된다.
+> 루트가 참조하는 값이나 스코프 체이닝으로 루트에서 참조할 수 있는 값은 모두 도달 가능한 값이 된다.
 
 
 자바스크립트 엔진 내에서 GC가 동작하면서 모든 객체를 모니터링하고, 도달할 수 없는 객체를 삭제한다.
 
 
-## 간단한 예시
+### 간단한 예시
 
 
 ```javascript
@@ -67,7 +76,7 @@ let user = {
 위의 예제에서 전역 변수 `user`는 `{ name = ‘kane’ }` 객체를 참조한다. 
 
 
-![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.05.12.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/%EA%B0%80%EB%B9%84%EC%A7%80%20%EC%BB%AC%EB%A0%89%ED%84%B0%20%28Garbage%20Collector%29/1.png)
+![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.05.12.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4611609b-4389-49be-8b91-92781080eaca/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.05.12.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230913%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230913T071342Z&X-Amz-Expires=3600&X-Amz-Signature=42b828ad87108763618a8b7ddeee7f2674e96404f626a8f2a6216ee11dff1854&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 `user`의 값을 `null`로 덮어쓰면 참조할 수 없는 상태가 되어 GC에 의해 메모리에서 삭제된다.
@@ -78,10 +87,10 @@ user = null;
 ```
 
 
-![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.14.45.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/%EA%B0%80%EB%B9%84%EC%A7%80%20%EC%BB%AC%EB%A0%89%ED%84%B0%20%28Garbage%20Collector%29/2.png)
+![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.14.45.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/75278786-c0f8-4a68-be71-8e8aa8ec9b32/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.14.45.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230913%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230913T071342Z&X-Amz-Expires=3600&X-Amz-Signature=754a01df413e45e985b26385c078c167c312cc8d61b85ceb5cb38fcf90f17b9f&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
-## 연결된 객체
+### 연결된 객체
 
 
 객체가 서로 연결된 경우에 외부에서 들어오는 참조만 도달 가능한 상태에 영향을 준다. (루트에서 도달 가능한지가 중요)
@@ -106,7 +115,7 @@ let family = marry({
 ```
 
 
-![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.15.41.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/%EA%B0%80%EB%B9%84%EC%A7%80%20%EC%BB%AC%EB%A0%89%ED%84%B0%20%28Garbage%20Collector%29/3.png)
+![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.15.41.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/dc246a2a-d0d6-4f7e-ab01-988302485591/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.15.41.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230913%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230913T071342Z&X-Amz-Expires=3600&X-Amz-Signature=cbd22c363c5a37f649598e4350601b431e45c8b8051d211559d0f869b4686c92&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 ```javascript
@@ -115,10 +124,10 @@ delete family.mother.husband;
 ```
 
 
-![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.16.27.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/%EA%B0%80%EB%B9%84%EC%A7%80%20%EC%BB%AC%EB%A0%89%ED%84%B0%20%28Garbage%20Collector%29/4.png)
+![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.16.27.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5ee35c8c-3165-497e-8d25-6482f5e3af32/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.16.27.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230913%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230913T071342Z&X-Amz-Expires=3600&X-Amz-Signature=e4a6242ecc398d536adc04940a1d9dd392e345c0cc0f790361bc4817ec6455bd&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
-## 도달할 수 없는 섬
+### 도달할 수 없는 섬
 
 
 객체들이 연결되어 하나의 섬 같은 구조를 만드는데, 이 섬에 도달(참조)할 수 없는 경우 섬 전체가 메모리에서 삭제된다.
@@ -132,10 +141,13 @@ family = null;
 ```
 
 
-![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.16.47.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/%EA%B0%80%EB%B9%84%EC%A7%80%20%EC%BB%AC%EB%A0%89%ED%84%B0%20%28Garbage%20Collector%29/5.png)
+![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.16.47.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/6a20d40f-c0b8-437a-9c12-420619c684ef/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.16.47.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230913%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230913T071342Z&X-Amz-Expires=3600&X-Amz-Signature=1648ab1630c394da9900a4e531a9d7808766a316afff175b6e1169bee8997065&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 # 알고리즘
+
+
+---
 
 
 GC는 mark-and-sweep 알고리즘을 사용한다. 프로세스는 다음과 같다.
@@ -146,10 +158,13 @@ GC는 mark-and-sweep 알고리즘을 사용한다. 프로세스는 다음과 같
 4. 루트에서 도달 가능한 모든 객체를 방문할 때까지 반복한다.
 5. mark 되지 않은 모든 객체를 메모리에서 삭제한다.
 
-![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.17.12.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/%EA%B0%80%EB%B9%84%EC%A7%80%20%EC%BB%AC%EB%A0%89%ED%84%B0%20%28Garbage%20Collector%29/6.png)
+![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.17.12.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/2fdda075-2b21-4345-84cd-98510e97017f/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.17.12.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230913%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230913T071342Z&X-Amz-Expires=3600&X-Amz-Signature=f39616ea9b71d6556284347d57fe9a5665062a5034b23358f6251e343baf0591&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 # 최적화 기법
+
+
+---
 
 
 GC에서 가비지 컬렉션이 수행할 때 프로그램이 멈추게 되는데, 이를 stop-the-world라 한다. 이 시간이 길어질수록 성능에 영향을 주게 된다.
@@ -164,7 +179,7 @@ GC에서 가비지 컬렉션이 수행할 때 프로그램이 멈추게 되는�
 작업을 분할해서 메인 스레드의 지연 시간을 해결해서 실행 속도를 증가시키는 방식이다.
 
 
-![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.17.30.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/%EA%B0%80%EB%B9%84%EC%A7%80%20%EC%BB%AC%EB%A0%89%ED%84%B0%20%28Garbage%20Collector%29/7.png)
+![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.17.30.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b3bbb6b6-2315-413d-bb37-ce926229e129/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.17.30.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230913%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230913T071342Z&X-Amz-Expires=3600&X-Amz-Signature=879be426994c9791f1445ef351785323682edc92f2c83094204d77fb53c95224&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 ## Parallel
@@ -176,7 +191,7 @@ GC에서 가비지 컬렉션이 수행할 때 프로그램이 멈추게 되는�
 이 방식은 여전히 stop-the-world가 발생할 수 있지만, 스레드 수로 나눈 시간만큼 stop-the-world 시간이 줄어든다.
 
 
-![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.17.38.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/%EA%B0%80%EB%B9%84%EC%A7%80%20%EC%BB%AC%EB%A0%89%ED%84%B0%20%28Garbage%20Collector%29/8.png)
+![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.17.38.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4d6ee47a-2ed5-4651-8644-a8330e4bea65/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.17.38.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230913%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230913T071342Z&X-Amz-Expires=3600&X-Amz-Signature=edd4a4f3919f444b449ffd0a2eb6b948cd49544b64334e817f7757639b252fed&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 ## Concurrent
@@ -188,10 +203,13 @@ GC에서 가비지 컬렉션이 수행할 때 프로그램이 멈추게 되는�
 메인 스레드가 오직 자바스크립트만 실행하기 때문에 stop-the-world는 발생하지 않는 장점이 있지만, 동시에 동일한 객체를 메인 스레드와 헬퍼 스레드가 접근할 때 읽기/쓰기 경쟁 및 힙 영역이 지속적으로 변경되어 이전 작업이 무효화 될 수 있는 단점이 있어 가장 어려운 방식입니다.
 
 
-![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.17.52.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/%EA%B0%80%EB%B9%84%EC%A7%80%20%EC%BB%AC%EB%A0%89%ED%84%B0%20%28Garbage%20Collector%29/9.png)
+![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.17.52.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a6228707-5171-4e44-bea4-ea1a4e539669/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-31_22.17.52.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230913%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230913T071342Z&X-Amz-Expires=3600&X-Amz-Signature=f927901e378c9076cf77e824a05d8f91f9b4064549d7dbcd1a7df2b3ed992df8&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 # 참조
+
+
+---
 
 
 [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_management](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_management)

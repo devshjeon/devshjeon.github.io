@@ -9,15 +9,24 @@ parent: JavaScript
 ---
 # 선행
 
-- [실행 컨텍스트 (Execute Context)](https://devshjeon.github.io/docs/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/3.%EC%8B%A4%ED%96%89%20%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%20(Execution%20Context))
+
+---
+
+- [실행 컨텍스트 (Execute Context)](https://devshjeon.github.io/docs/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/%EC%8B%A4%ED%96%89%20%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%20(Execution%20Context))
 
 # 요약
+
+
+---
 
 - 호이스팅은 실행 컨텍스트가 생성되는 단계에서 식별자 정보를 environment record에 저장하는 과정이다.
 - 호이스팅은 변수, 함수, 모듈에서 발생한다.
 - 호이스팅은 선언에만 관련이 있다.
 
 # 호이스팅 (Hoisting)이란?
+
+
+---
 
 
 호이스팅이란 실행 컨텍스트가 생성되는 단계에서 현재 컨텍스트의 식별자 정보를 lexical environment의 environment record에 저장하는 과정을 의미한다.
@@ -29,7 +38,7 @@ parent: JavaScript
 이때, 변수, 함수를 어떻게 선언하느냐에 따라서 environment record에 저장되는 방식이 달라진다.
 
 
-## 변수
+### 변수
 
 
 변수를 선언하는 방식에는 `var`, `let`, `const`가 있다.
@@ -67,7 +76,7 @@ const x = 1;
 ```
 
 
-## 함수
+### 함수
 
 
 함수의 경우 선언식, 표현식으로 나눌 수 있는데, 선언식의 경우 함수 그대로 environment record에 저장된다. 
@@ -95,7 +104,7 @@ var foo = function () {
 ```
 
 
-## 모듈
+### 모듈
 
 
 모듈도 호이스팅이 진행된다.
@@ -110,6 +119,9 @@ myCanvas.createReportList();
 
 
 # 참조
+
+
+---
 
 
 [https://developer.mozilla.org/en-US/docs/Glossary/Hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)
