@@ -3,7 +3,7 @@ layout: default
 title: 프로토타입 (Prototype)
 has_children: false
 last_modified_date: 2023-08-31 23:37
-nav_order: 9
+nav_order: 11
 grand_parent: 프로그래밍
 parent: JavaScript
 ---
