@@ -3,7 +3,7 @@ layout: default
 title: 실행 컨텍스트 (Execution Context)
 has_children: false
 last_modified_date: 2023-08-26 15:55
-nav_order: 5
+nav_order: 7
 grand_parent: 프로그래밍
 parent: JavaScript
 ---
@@ -169,7 +169,7 @@ function foo() {
 이 같은 차이점 때문에 동작 방식을 다르게 해야 하고 따라서 LE와 VE를 구분했다.
 
 
-# reference
+# 참조
 
 
 ---
