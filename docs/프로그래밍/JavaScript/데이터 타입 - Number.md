@@ -12,7 +12,7 @@ parent: JavaScript
 
 ---
 
-- 데이터 타입
+- [데이터 타입](https://devshjeon.github.io/docs/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/JavaScript/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%83%80%EC%9E%85/)
 
 # 키워드
 
