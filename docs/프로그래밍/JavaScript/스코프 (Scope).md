@@ -3,7 +3,7 @@ layout: default
 title: 스코프 (Scope)
 has_children: false
 last_modified_date: 2023-08-24 14:41
-nav_order: 6
+nav_order: 12
 grand_parent: 프로그래밍
 parent: JavaScript
 ---

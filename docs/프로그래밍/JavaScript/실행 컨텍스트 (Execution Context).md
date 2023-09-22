@@ -3,7 +3,7 @@ layout: default
 title: 실행 컨텍스트 (Execution Context)
 has_children: false
 last_modified_date: 2023-08-26 15:55
-nav_order: 7
+nav_order: 13
 grand_parent: 프로그래밍
 parent: JavaScript
 ---

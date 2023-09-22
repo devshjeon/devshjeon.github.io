@@ -3,7 +3,7 @@ layout: default
 title: 평가 전략 (Evaluation Strategy)
 has_children: false
 last_modified_date: 2023-09-10 17:58
-nav_order: 5
+nav_order: 11
 grand_parent: 프로그래밍
 parent: JavaScript
 ---
