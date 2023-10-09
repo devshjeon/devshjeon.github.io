@@ -31,10 +31,7 @@ function initNav() {
     }
     if (target) {
       e.preventDefault();
-      const active = target.parentNode.classList.toggle('active');
-      const passive = target.parentNode.classList.toggle('passive');
-      if (active && passive) target.parentNode.classList.toggle('passive');
-      target.ariaPressed = active;
+      target.ariaPressed = target.parentNode.classList.toggle('active');
     }
   });
 
@@ -42,7 +39,7 @@ function initNav() {
   const mainHeader = document.getElementById('main-header');
   const menuButton = document.getElementById('menu-button');
   
-  // disableHeadStyleSheet();
+  disableHeadStyleSheets();
 
   jtd.addEvent(menuButton, 'click', function(e){
     e.preventDefault();
@@ -71,12 +68,20 @@ function initNav() {
   {%- endif %}
 }
 
-// The page-specific <style> in the <head> is needed only when JS is disabled.
-// Moreover, it incorrectly overrides dynamic stylesheets set by setTheme(theme). 
-// The page-specific stylesheet is assumed to have index 1 in the list of stylesheets.
+// The <head> element is assumed to include the following stylesheets:
+// 0. a <link> to /assets/css/just-the-docs-default.css
+// 1. a <link> to /assets/css/just-the-docs-head-nav.css
+// 2. a <style> containing the result of _includes/css/activation.scss.liquid.
+// It also includes any styles provided by users in _includes/head_custom.html.
+// Stylesheet 2 may be missing (compression can remove empty <style> elements)
+// so disableHeadStyleSheet() needs to access it by its id.
 
-function disableHeadStyleSheet() {
+function disableHeadStyleSheets() {
   document.styleSheets[1].disabled = true;
+  const activation = document.getElementById('jtd-nav-activation');
+  if (activation) {
+    activation.disabled = true;
+  }
 }
 
 {%- if site.search_enabled != false %}
@@ -93,7 +98,6 @@ function initSearch() {
       lunr.tokenizer.separator = {{ site.search.tokenizer_separator | default: site.search_tokenizer_separator | default: "/[\s\-/]+/" }}
 
       var index = lunr(function(){
-        this.use(lunr.multiLanguage('en', 'ko'));
         this.ref('id');
         this.field('title', { boost: 200 });
         this.field('content', { boost: 2 });
@@ -369,7 +373,7 @@ function searchLoaded(index, docs) {
       {%- if site.search.rel_url != false %}
       var resultRelUrl = document.createElement('span');
       resultRelUrl.classList.add('search-result-rel-url');
-      resultRelUrl.innerText = decodeURIComponent(doc.relUrl);
+      resultRelUrl.innerText = doc.relUrl;
       resultTitle.appendChild(resultRelUrl);
       {%- endif %}
     }
@@ -493,12 +497,12 @@ function scrollNav() {
   if (targetLink) {
     const rect = targetLink.getBoundingClientRect();
     document.getElementById('site-nav').scrollBy(0, rect.top - 3*rect.height);
+    targetLink.removeAttribute('href');
   }
 }
 
 // Find the nav-list-link that refers to the current page
-// then make it and all enclosing nav-list-item elements active,
-// and make all other folded collections passive
+// then make it and all enclosing nav-list-item elements active.
 
 function activateNav() {
   var target = navLink();
@@ -512,17 +516,6 @@ function activateNav() {
     if (target) {
       target.classList.toggle('active', true);
       target = target.parentNode;
-    }
-  }
-  const elements = document.getElementsByClassName("nav-category-list");
-  for (const element of elements) {
-    const item = element.children[0];
-    const active = item.classList.toggle('active');
-    if (active) {
-      item.classList.toggle('active', false);
-      item.classList.toggle('passive', true);
-    } else {
-      item.classList.toggle('active', true);
     }
   }
 }
