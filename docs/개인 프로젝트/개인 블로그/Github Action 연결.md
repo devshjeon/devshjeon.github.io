@@ -31,6 +31,12 @@ parent: 개인 블로그
 
 
 ```yaml
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# Sample workflow for building and deploying a Jekyll site to GitHub Pages
 name: Notion sync
 
 on:
@@ -48,7 +54,7 @@ permissions:
 
 # Allow one concurrent deployment
 concurrency:
-  group: "notion-sync"
+  group: "devshjeon-notion-sync"
   cancel-in-progress: true
 
 jobs:
@@ -59,7 +65,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Create file
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: "18"
       - run: npm install
@@ -76,10 +82,10 @@ jobs:
           commit_message: Update Importer posts
           branch: local
           commit_user_name: importer-bot 🤖
-          commit_user_email: email
-          commit_author: importer-bot 🤖 <email>
+          commit_user_email: devshjeon@gmail.com
+          commit_author: importer-bot 🤖 <devshjeon@github.com>
 
-      - run: gh api /repos/**USERNAME/REPO_NAME**/dispatches -f event_type='RUN_WORKFLOW_DISPATCH_NEXT'
+      - run: gh api /repos/devshjeon/devshjeon/dispatches -f event_type='RUN_WORKFLOW_DISPATCH_NEXT'
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 ```
@@ -94,6 +100,12 @@ jobs:
 
 
 ```yaml
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# Sample workflow for building and deploying a Jekyll site to GitHub Pages
 name: Deploy Jekyll site to Pages
 
 on:
@@ -111,7 +123,7 @@ permissions:
 
 # Allow one concurrent deployment
 concurrency:
-  group: "deploy"
+  group: "devshjeon-deploy"
   cancel-in-progress: true
 
 jobs:
@@ -120,18 +132,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2' # Not needed with a .ruby-version file
+          ruby-version: "3.2"
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
           cache-version: 0 # Increment this number if you need to re-download cached gems
 
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v2
+        uses: actions/configure-pages@v3
 
       - name: Build with Jekyll
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
@@ -139,7 +151,7 @@ jobs:
           JEKYLL_ENV: production
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v2
 
   # Deployment job
   deploy:
@@ -151,7 +163,7 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v2
 ```
 
 

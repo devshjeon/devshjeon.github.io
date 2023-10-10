@@ -164,7 +164,7 @@ const s3 = new AWS.S3()
 
 // passing notion client to the option
 const n2m = new NotionToMarkdown({ notionClient: notion })
-const regexPattern = "https:\/\/s3.us-west-2.amazonaws.com.+x-id=GetObject"
+const regexPattern = "https:\/\/.*s3.us-west-2.amazonaws.com.+x-id=GetObject"
 
 function findImageUrl(str) {
   const regex = new RegExp(regexPattern, "g")
@@ -207,7 +207,8 @@ async function downloadImages(path, imageUrls) {
   let number = 1
   const s3Urls = []
   for (let url of imageUrls) {
-    const fileName = `${path}/${number}.png`
+    const ext = imageUrls[0]?.split(".")?.pop()?.split("?")[0] || "png"
+    const fileName = `${path}/${number}.${ext}`
     await downloadImage(url, fileName)
 
     const fileContent = await fs.promises.readFile(fileName)
@@ -293,6 +294,10 @@ function replaceUrl(body, imageUrls, s3Urls) {
 
     // 작성일
     let date = moment(r.created_time).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm")
+    // let pDate = r.properties?.["최종수정일"]?.["last_edited_time"]
+    // if (pDate) {
+    //   date = moment(pDate).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm")
+    // }
 
     let header = `---
 layout: default
@@ -338,7 +343,7 @@ parent: ${upFolder}`
     }
 
     //writing to file
-    const fTitle = navOrder ? `${navOrder}.${title}.md` : `${title}.md`
+    const fTitle = `${title}.md`
     fs.writeFile(path.join(folderPath, fTitle), header + body, (err) => {
       if (err) {
         console.log(err)
