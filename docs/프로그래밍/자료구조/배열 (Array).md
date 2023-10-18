@@ -109,7 +109,7 @@ parent: 자료구조
 	| reading/writing, cached, many shapes   | `--`                       | `+`                       |
 	| colloquial name                        | fast                       | slow                      |
 
-undefined
+
 	```javascript
 	// bad idea
 	const a = new Array(); // dictionary mode로 처리
