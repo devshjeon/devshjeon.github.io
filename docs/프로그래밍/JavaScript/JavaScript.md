@@ -3,7 +3,7 @@ layout: default
 title: JavaScript
 has_children: true
 last_modified_date: 2023-08-10 16:32
-nav_order: 1
+nav_order: 1.1
 parent: 프로그래밍
 ---
 # JavaScript 
