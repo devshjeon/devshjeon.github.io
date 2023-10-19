@@ -26,6 +26,7 @@ layout: table_wrappers
             {% include components/children_nav.html %}
           {% endif %}
 
+          {% if page.has_children == false %}
           <script src="https://giscus.app/client.js"
                   data-repo="devshjeon/devshjeon.github.io"
                   data-repo-id="R_kgDOJ0EQOQ"
@@ -41,6 +42,7 @@ layout: table_wrappers
                   crossorigin="anonymous"
                   async>
           </script>
+          {% endif %}
         </main>
         {% include components/footer.html %}
       </div>
