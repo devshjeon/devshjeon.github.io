@@ -96,6 +96,10 @@ function replaceUrl(body, imageUrls, s3Urls) {
   return body
 }
 
+function slug(str) {
+  return str.replaceAll(" ", "-")
+}
+
 (async () => {
   // ensure directory exists
   const root = `docs`
@@ -158,6 +162,7 @@ function replaceUrl(body, imageUrls, s3Urls) {
     //   date = moment(pDate).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm")
     // }
 
+    let permalink = ""
     let header = `---
 layout: default
 title: ${title}
@@ -173,15 +178,21 @@ nav_order: ${navOrder}`
       if (upFolder) {
         header += `
 parent: ${upUpFolder}`
+        permalink += slug(upUpFolder)
       }
     } else {
       header += `
 grand_parent: ${upUpFolder}`
+      permalink += slug(upUpFolder)
       if (upFolder) {
         header += `
 parent: ${upFolder}`
+        permalink += "/" + slug(upUpFolder)
       }
     }
+    permalink += "/" + slug(title)
+    header += `
+permalink: ${permalink}`
     header += `
 ---`
 
