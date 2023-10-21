@@ -145,7 +145,7 @@ layout: table_wrappers
 ```
 
 
-댓글은 자식 글에만 남기고 싶어 `{% if page.has_children == false %}` 조건을 추가했습니다.
+댓글은 자식 글에만 남기고 싶어 `page.has_children == false` 조건을 추가했습니다.
 
 
 # 테스트
