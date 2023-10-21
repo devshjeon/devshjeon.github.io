@@ -6,6 +6,7 @@ last_modified_date: 2023-10-19 16:05
 nav_order: 6
 grand_parent: 개인 프로젝트
 parent: 개인 블로그
+permalink: 개인-프로젝트/개인-프로젝트/블로그-댓글&반응-추가-(giscus)
 ---
 이번에는 블로그에 댓글을 추가해보겠습니다.
 

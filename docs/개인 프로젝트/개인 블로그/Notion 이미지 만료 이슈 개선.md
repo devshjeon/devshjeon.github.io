@@ -6,6 +6,7 @@ last_modified_date: 2023-07-03 17:52
 nav_order: 5
 grand_parent: 개인 프로젝트
 parent: 개인 블로그
+permalink: 개인-프로젝트/개인-프로젝트/Notion-이미지-만료-이슈-개선
 ---
 # P**rerequisite**
 

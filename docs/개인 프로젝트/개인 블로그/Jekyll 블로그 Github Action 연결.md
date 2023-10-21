@@ -6,6 +6,7 @@ last_modified_date: 2023-06-27 17:30
 nav_order: 7
 grand_parent: 개인 프로젝트
 parent: 개인 블로그
+permalink: 개인-프로젝트/개인-프로젝트/Jekyll-블로그-Github-Action-연결
 ---
 Github Action을 통해 로컬 환경에서 구축한 블로그를 배포해보겠습니다.
 

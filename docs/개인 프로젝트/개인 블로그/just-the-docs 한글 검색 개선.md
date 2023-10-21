@@ -6,6 +6,7 @@ last_modified_date: 2023-06-28 18:26
 nav_order: 3
 grand_parent: 개인 프로젝트
 parent: 개인 블로그
+permalink: 개인-프로젝트/개인-프로젝트/just-the-docs-한글-검색-개선
 ---
 # P**rerequisite**
 

@@ -6,6 +6,7 @@ last_modified_date: 2023-06-27 15:10
 nav_order: 2
 grand_parent: 개인 프로젝트
 parent: 개인 블로그
+permalink: 개인-프로젝트/개인-프로젝트/GitHub-블로그-만들기-(Jekyll)
 ---
 # P**rerequisite**
 

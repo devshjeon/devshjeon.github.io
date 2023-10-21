@@ -6,6 +6,7 @@ last_modified_date: 2023-06-27 17:27
 nav_order: 4
 grand_parent: 개인 프로젝트
 parent: 개인 블로그
+permalink: 개인-프로젝트/개인-프로젝트/Notion-API를-이용한-포스팅-관리
 ---
 이번에는 Notion API를 사용해서 Notion에서 작성한 글을 Markdown 파일로 생성하는 과정을 살펴보겠습니다.
 
