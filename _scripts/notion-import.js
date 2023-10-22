@@ -98,6 +98,13 @@ function slug(str) {
   return str.replaceAll(" ", "-")
 }
 
+function escapeCodeBlock(body) {
+  const regex = /```([\s\S]*?)```/g
+  return body.replace(regex, function(match, htmlBlock) {
+    return "{% raw %}\n```\n" + htmlBlock + "\n```\n{% endraw %}"
+  })
+}
+
 (async () => {
   // ensure directory exists
   const root = `docs`
@@ -197,6 +204,9 @@ permalink: ${permalink}`
 
     const mdBlocks = await n2m.pageToMarkdown(id)
     let body = n2m.toMarkdownString(mdBlocks)["parent"]
+
+    // code block escape
+    body = escapeCodeBlock(body)
 
     // download image
     const imageUrls = findImageUrl(body)
