@@ -14,13 +14,17 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
-  <link rel="stylesheet" href="{{ '/assets/css/just-the-docs-default.css' | relative_url }}">
+  <script>
+    if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark-mode');
+  </script>
+
+  <link id="main-css" rel="stylesheet" href="{{ '/assets/css/just-the-docs-default.css' | relative_url }}">
+
+<!--  <link rel="stylesheet" href="{{ '/assets/css/just-the-docs-head-nav.css' | relative_url }}">-->
   
-  <link rel="stylesheet" href="{{ '/assets/css/just-the-docs-head-nav.css' | relative_url }}">
-  
-  <style id="jtd-nav-activation">
-  {% include css/activation.scss.liquid %}
-  </style>
+<!--  <style id="jtd-nav-activation">-->
+<!--  {% include css/activation.scss.liquid %}-->
+<!--  </style>-->
 
   {% if site.ga_tracking != nil %}
     {% assign ga_tracking_ids = site.ga_tracking | split: "," %}

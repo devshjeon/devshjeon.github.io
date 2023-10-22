@@ -77,7 +77,7 @@ function initNav() {
 // so disableHeadStyleSheet() needs to access it by its id.
 
 function disableHeadStyleSheets() {
-  document.styleSheets[1].disabled = true;
+  // document.styleSheets[1].disabled = true;
   const activation = document.getElementById('jtd-nav-activation');
   if (activation) {
     activation.disabled = true;
@@ -470,15 +470,15 @@ function searchLoaded(index, docs) {
 
 // Switch theme
 
-jtd.getTheme = function() {
-  var cssFileHref = document.querySelector('[rel="stylesheet"]').getAttribute('href');
-  return cssFileHref.substring(cssFileHref.lastIndexOf('-') + 1, cssFileHref.length - 4);
-}
-
-jtd.setTheme = function(theme) {
-  var cssFile = document.querySelector('[rel="stylesheet"]');
-  cssFile.setAttribute('href', '{{ "assets/css/just-the-docs-" | relative_url }}' + theme + '.css');
-}
+// jtd.getTheme = function() {
+//   var cssFileHref = document.querySelector('[rel="stylesheet"]').getAttribute('href');
+//   return cssFileHref.substring(cssFileHref.lastIndexOf('-') + 1, cssFileHref.length - 4);
+// }
+//
+// jtd.setTheme = function(theme) {
+//   var cssFile = document.querySelector('[rel="stylesheet"]');
+//   cssFile.setAttribute('href', '{{ "assets/css/just-the-docs-" | relative_url }}' + theme + '.css');
+// }
 
 // Note: pathname can have a trailing slash on a local jekyll server
 // and not have the slash on GitHub Pages
@@ -521,6 +521,42 @@ function activateNav() {
   }
 }
 
+function darkMode() {
+  const toggleDarkMode = document.getElementById("theme-toggle")
+
+  if (localStorage.getItem("theme") === "dark") {
+    setTheme("dark")
+  } else {
+    setTheme("light")
+  }
+
+  jtd.addEvent(toggleDarkMode, "click", function() {
+    const currentTheme = getTheme()
+    const newTheme = currentTheme === "dark" ? "light" : "dark"
+
+    localStorage.setItem("theme", newTheme)
+    setTheme(newTheme)
+  })
+
+  function getTheme() {
+    return document.documentElement.classList.contains("dark-mode") ? "dark" : "light"
+  }
+
+  function setTheme(theme = "light") {
+    if (theme === "dark") {
+      toggleDarkMode.innerHTML = `<svg width="18px" height="18px"><use href="#svg-moon"></use></svg>`
+      document.documentElement.classList.add("dark-mode")
+      document.documentElement.classList.remove("light-mode")
+    } else {
+      toggleDarkMode.innerHTML = `<svg width="18px" height="18px"><use href="#svg-sun"></use></svg>`
+      document.documentElement.classList.add("light-mode")
+      document.documentElement.classList.remove("dark-mode")
+    }
+    const cssFile = document.querySelector("[id=\"main-css\"]")
+    cssFile.setAttribute("href", "/assets/css/just-the-docs-" + theme + ".css")
+  }
+}
+
 // Document ready
 
 jtd.onReady(function(){
@@ -530,6 +566,7 @@ jtd.onReady(function(){
   {%- endif %}
   activateNav();
   scrollNav();
+  darkMode();
 });
 
 // Copy button on code

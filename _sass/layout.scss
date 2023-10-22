@@ -145,6 +145,7 @@
   height: 100%;
   padding: $gutter-spacing-sm;
   align-items: center;
+  cursor: pointer;
 }
 
 @include mq(md) {
@@ -206,4 +207,11 @@ body {
   width: $sp-5;
   height: $sp-5;
   color: $link-color;
+}
+
+
+.giscus-frame {
+  background-color: white;
+  padding-left: 10px;
+  padding-right: 10px;
 }
