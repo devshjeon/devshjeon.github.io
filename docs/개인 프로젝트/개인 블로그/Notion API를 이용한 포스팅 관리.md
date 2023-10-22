@@ -2,7 +2,8 @@
 layout: default
 title: Notion API를 이용한 포스팅 관리
 has_children: false
-last_modified_date: 2023-06-27 17:27
+published_date: 2023-06-27
+last_modified_date: 2023-10-23
 nav_order: 4
 grand_parent: 개인 프로젝트
 parent: 개인 블로그
@@ -18,13 +19,15 @@ permalink: 개인-프로젝트/개인-프로젝트/Notion-API를-이용한-포�
 3. Notion API 발급
 4. 스크립트 작성
 
-# Markdown 파일 분석
+## Markdown 파일 분석
 
 
 제가 사용하는 Jekyll Theme인 [just-the-docs](https://github.com/just-the-docs/just-the-docs)에 대한 마크다운 파일 포맷은 아래와 같습니다.
 
 
-```markdown
+{% raw %}
+```
+markdown
 ---
 layout: 레이아웃 (default, minimal)
 title: 글 제목
@@ -35,7 +38,9 @@ parent: 상위 메뉴명
 ---
 
 Markdown 문법
+
 ```
+{% endraw %}
 
 
 Layout 메뉴를 살펴보면, Layout → A minimal layout page → Default layout child page 순서로 계층구조를 이루는데, 파일의 실제 폴더 구조와 마크다운 형태로는 다음과 같이 구성되는 것을 확인했습니다.
@@ -53,7 +58,9 @@ layout 폴더(Layout 메뉴) 하위에 layout에 대한 Markdown 파일이 자�
 최상위, 상위, 자식에 대한 Markdown 파일을 아래와 같습니다.
 
 
-```markdown
+{% raw %}
+```
+markdown
 ---
 title: Layout
 layout: default
@@ -62,10 +69,14 @@ has_children: true -> 메뉴로 만들기 위해서는 true 설정 필요
 ---
 
 # Layout
+
 ```
+{% endraw %}
 
 
-```markdown
+{% raw %}
+```
+markdown
 ---
 title: A minimal layout page
 layout: minimal
@@ -74,10 +85,14 @@ has_children: true
 ---
 
 # A minimal layout page
+
 ```
+{% endraw %}
 
 
-```markdown
+{% raw %}
+```
+markdown
 ---
 title: Default layout child page
 layout: default
@@ -86,7 +101,9 @@ grand_parent: Layout -> 최상위 메뉴 지정
 ---
 
 This is a child page that uses the same minimal layout as its parent page.
+
 ```
+{% endraw %}
 
 
 # Notion 테이블 구성
@@ -107,7 +124,7 @@ This is a child page that uses the same minimal layout as its parent page.
 ![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-10-20_02.55.05.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Notion%20API%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%ED%8F%AC%EC%8A%A4%ED%8C%85%20%EA%B4%80%EB%A6%AC/3.png)
 
 
-# Notion API 발급
+## Notion API 발급
 
 
 Notion API 사용을 위해 [Notion 페이지](https://www.notion.so/my-integrations)에서 키를 생성한 후 안전한 곳에 보관합니다.
@@ -128,7 +145,7 @@ Notion API 사용을 위해 [Notion 페이지](https://www.notion.so/my-integrat
 `https://www.notion.so/<database_id>?v=<long_hash>`
 
 
-# 스크립트 작성
+## 스크립트 작성
 
 
 다음은 Notion 테이블의 글을 가져와 Markdown 파일로 변환하는 JavaScript 코드입니다.
@@ -137,15 +154,21 @@ Notion API 사용을 위해 [Notion 페이지](https://www.notion.so/my-integrat
 Notion 테이블의 내용을 쉽게 Markdown 파일로 만들어주는 [notion-to-md](https://github.com/souvikinator/notion-to-md) 라이브러리를 사용했습니다.
 
 
-```shell
-npm install -D @notionhq/client moment notion-to-md
+{% raw %}
 ```
+shell
+npm install -D @notionhq/client moment notion-to-md
+
+```
+{% endraw %}
 
 
 `_scripts/notion-import.js`
 
 
-```javascript
+{% raw %}
+```
+javascript
 const { Client } = require("@notionhq/client")
 const { NotionToMarkdown } = require("notion-to-md")
 const moment = require("moment")
@@ -261,7 +284,9 @@ parent: ${upFolder}`
     })
   }
 })()
+
 ```
+{% endraw %}
 
 
 로컬환경에서 환경변수 `NOTION_TOKEN`, `DATABASE_ID` 를 등록하고 실행시키면 `docs` 폴더에 마크다운 파일이 생성된 것을 확인할 수 있습니다.
@@ -274,7 +299,7 @@ parent: ${upFolder}`
 ![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-10-20_03.25.02.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Notion%20API%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%ED%8F%AC%EC%8A%A4%ED%8C%85%20%EA%B4%80%EB%A6%AC/7.png)
 
 
-# **Reference**
+## **Reference**
 
 
 [Jekyll-기반-Github-Pages와-Notion-Page-연동](https://lourcode.kr/posts/Jekyll-%EA%B8%B0%EB%B0%98-Github-Pages%EC%99%80-Notion-Page-%EC%97%B0%EB%8F%99/)

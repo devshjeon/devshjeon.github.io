@@ -2,22 +2,27 @@
 layout: default
 title: Notion 이미지 만료 이슈 개선
 has_children: false
-last_modified_date: 2023-07-03 17:52
+published_date: 2023-07-03
+last_modified_date: 2023-10-23
 nav_order: 5
 grand_parent: 개인 프로젝트
 parent: 개인 블로그
 permalink: 개인-프로젝트/개인-프로젝트/Notion-이미지-만료-이슈-개선
 ---
-# P**rerequisite**
+## P**rerequisite**
 
 - Notion 테이블 글을 Markdown 파일로 생성하는 스크립트 작성
 
 지난번 작성한 스크립트를 실행하면 Markdown 파일이 잘 생성되고, 이미지가 있는 글도 아래와 같이 확인할 수 있습니다.
 
 
-```markdown
-![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-06-28_18.32.41.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Notion%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EB%A7%8C%EB%A3%8C%20%EC%9D%B4%EC%8A%88%20%EA%B0%9C%EC%84%A0/1.png)
+{% raw %}
 ```
+markdown
+![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-06-28_18.32.41.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Notion%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EB%A7%8C%EB%A3%8C%20%EC%9D%B4%EC%8A%88%20%EA%B0%9C%EC%84%A0/1.png)
+
+```
+{% endraw %}
 
 
 해당 링크는 처음에는 잘 동작하지만, 일정 시간이 지나면 만료가 되어 이미지가 나오지 않습니다.
@@ -32,10 +37,10 @@ permalink: 개인-프로젝트/개인-프로젝트/Notion-이미지-만료-이�
 이를 해결하기 위해 자체 S3를 생성하고 여기에 이미지를 관리하도록 스크립트를 수정하였습니다.
 
 
-# Amazon S3 설정
+## Amazon S3 설정
 
 
-## 버킷 생성
+### 버킷 생성
 
 
 버킷 이름과 지역을 설정하고 모든 퍼블릭 엑세스 차단 체크박스를 해제하고 버킷을 생성합니다.
@@ -44,13 +49,15 @@ permalink: 개인-프로젝트/개인-프로젝트/Notion-이미지-만료-이�
 ![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-07-03_20.27.54.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Notion%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EB%A7%8C%EB%A3%8C%20%EC%9D%B4%EC%8A%88%20%EA%B0%9C%EC%84%A0/3.png)
 
 
-## 정책 설정
+### 정책 설정
 
 
 생성한 버킷을 클릭하고 권한 탭에 들어가 버킷 정책에서 버킷에 대한 읽기, 쓰기, 삭제가 가능하도록 정책을 등록합니다.
 
 
-```text
+{% raw %}
+```
+text
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -63,13 +70,15 @@ permalink: 개인-프로젝트/개인-프로젝트/Notion-이미지-만료-이�
         }
     ]
 }
+
 ```
+{% endraw %}
 
 
 ![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-07-03_20.29.08.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Notion%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EB%A7%8C%EB%A3%8C%20%EC%9D%B4%EC%8A%88%20%EA%B0%9C%EC%84%A0/4.png)
 
 
-## Access Key 등록
+### Access Key 등록
 
 
 우측 상단 사용자명 → 보안 자격 증명 → 액세스 관리 → 사용자 → 사용자 추가를 클릭하여 사용자를 생성합니다.
@@ -90,13 +99,15 @@ permalink: 개인-프로젝트/개인-프로젝트/Notion-이미지-만료-이�
 생성한 Access Key와 Secret Access Key는 안전하게 보관합니다.
 
 
-# Amazon S3 업로드 스크립트 작성
+## Amazon S3 업로드 스크립트 작성
 
 
 기존 스크립트에 이미지 다운로드 및 S3 업로드하는 코드를 추가하였습니다.
 
 
-```javascript
+{% raw %}
+```
+javascript
 const { Client } = require("@notionhq/client")
 const { NotionToMarkdown } = require("notion-to-md")
 const moment = require("moment")
@@ -309,22 +320,28 @@ parent: ${upFolder}`
     })
   }
 })()
+
 ```
+{% endraw %}
 
 
 해당 스크립트를 실행하면 이미지 URL이 Notion에서 제가 생성한 버킷으로 변경된 것을 확인할 수 있습니다.
 
 
-```markdown
+{% raw %}
+```
+markdown
 스크립트 변경 전
 ![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-06-28_18.32.41.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Notion%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EB%A7%8C%EB%A3%8C%20%EC%9D%B4%EC%8A%88%20%EA%B0%9C%EC%84%A0/7.png)
 
 스크립트 변경 후
 ![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-06-28_18.32.41.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/GitHub%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%20%28Jekyll%29/1.png)
+
 ```
+{% endraw %}
 
 
-# Reference
+## Reference
 
 
 [AWS S3로 이미지 업로드](https://velog.io/@mingsound21/SpringBoot-AWS-S3%EB%A1%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%85%EB%A1%9C%EB%93%9C)

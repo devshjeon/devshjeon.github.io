@@ -2,13 +2,14 @@
 layout: default
 title: GitHub 블로그 만들기 (Jekyll)
 has_children: false
-last_modified_date: 2023-06-27 15:10
+published_date: 2023-06-27
+last_modified_date: 2023-10-23
 nav_order: 2
 grand_parent: 개인 프로젝트
 parent: 개인 블로그
 permalink: 개인-프로젝트/개인-프로젝트/GitHub-블로그-만들기-(Jekyll)
 ---
-# P**rerequisite**
+## P**rerequisite**
 
 
 GitHub에 블로그를 띄우기 위해 다음과 같은 항목들이 필요합니다.
@@ -20,7 +21,7 @@ GitHub에 블로그를 띄우기 위해 다음과 같은 항목들이 필요합�
 구글에 검색해보면 굉장히 많은 Jekyll Theme 가 있는데 저는 [just-the-docs](https://github.com/just-the-docs/just-the-docs)를 선택했습니다.
 
 
-# 로컬 환경 구축
+## 로컬 환경 구축
 
 
 선택한 Jekyll Theme 테스트를 위해 로컬 환경을 구축하겠습니다.
@@ -32,13 +33,15 @@ GitHub에 블로그를 띄우기 위해 다음과 같은 항목들이 필요합�
 2. ruby 패키지 설치
 3. Jekyll Theme 저장소 Clone
 
-## rbenv, ruby-build 설치
+### rbenv, ruby-build 설치
 
 
 rbenv는 ruby 버전관리 패키지로, 저는 Homebrew, zsh를 사용했습니다.
 
 
-```shell
+{% raw %}
+```
+shell
 $ brew update
 $ brew install rbenv ruby-build
 
@@ -70,28 +73,38 @@ $ source ~/.zshrc
 
 # ruby 버전 확인
 $ ruby -v
+
 ```
+{% endraw %}
 
 
-## ruby 패키지 설치
+### ruby 패키지 설치
 
 
-```shell
+{% raw %}
+```
+shell
 $ gem install bundler
 $ gem install jekyll
+
 ```
+{% endraw %}
 
 
-## Jekyll Theme 저장소 Clone
+### Jekyll Theme 저장소 Clone
 
 
 프로젝트를 받은 후 bundler 설치 후 실행 명령어를 입력합니다.
 
 
-```shell
+{% raw %}
+```
+shell
 $ bundler install
 $ bundle exec jekyll serve
+
 ```
+{% endraw %}
 
 
 
@@ -101,7 +114,7 @@ $ bundle exec jekyll serve
 ![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-06-28_18.32.41.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/GitHub%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%20%28Jekyll%29/1.png)
 
 
-# **Reference**
+## **Reference**
 
 
 [https://frhyme.github.io/blog/install_jekyll_again/](https://frhyme.github.io/blog/install_jekyll_again/)
