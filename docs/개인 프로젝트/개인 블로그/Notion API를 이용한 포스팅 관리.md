@@ -46,13 +46,13 @@ Markdown 문법
 Layout 메뉴를 살펴보면, Layout → A minimal layout page → Default layout child page 순서로 계층구조를 이루는데, 파일의 실제 폴더 구조와 마크다운 형태로는 다음과 같이 구성되는 것을 확인했습니다.
 
 
-![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-10-20_02.43.50.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Notion%20API%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%ED%8F%AC%EC%8A%A4%ED%8C%85%20%EA%B4%80%EB%A6%AC/1.png)
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Notion%20API%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%ED%8F%AC%EC%8A%A4%ED%8C%85%20%EA%B4%80%EB%A6%AC/1.png" %}
 
 
 layout 폴더(Layout 메뉴) 하위에 layout에 대한 Markdown 파일이 자식들과 같은 레벨에 존재하는 것을 확인했습니다.
 
 
-![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-10-20_02.45.25.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Notion%20API%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%ED%8F%AC%EC%8A%A4%ED%8C%85%20%EA%B4%80%EB%A6%AC/2.png)
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Notion%20API%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%ED%8F%AC%EC%8A%A4%ED%8C%85%20%EA%B4%80%EB%A6%AC/2.png" %}
 
 
 최상위, 상위, 자식에 대한 Markdown 파일을 아래와 같습니다.
@@ -121,7 +121,7 @@ This is a child page that uses the same minimal layout as its parent page.
 실제 Notion에서 구성한 테이블은 다음과 같습니다.
 
 
-![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-10-20_02.55.05.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Notion%20API%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%ED%8F%AC%EC%8A%A4%ED%8C%85%20%EA%B4%80%EB%A6%AC/3.png)
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Notion%20API%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%ED%8F%AC%EC%8A%A4%ED%8C%85%20%EA%B4%80%EB%A6%AC/3.png" %}
 
 
 ## Notion API 발급
@@ -130,13 +130,13 @@ This is a child page that uses the same minimal layout as its parent page.
 Notion API 사용을 위해 [Notion 페이지](https://www.notion.so/my-integrations)에서 키를 생성한 후 안전한 곳에 보관합니다.
 
 
-![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-07-03_19.36.45.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Notion%20API%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%ED%8F%AC%EC%8A%A4%ED%8C%85%20%EA%B4%80%EB%A6%AC/4.png)
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Notion%20API%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%ED%8F%AC%EC%8A%A4%ED%8C%85%20%EA%B4%80%EB%A6%AC/4.png" %}
 
 
 다음으로 Notion 데이터베이스 페이지에서 생성한 API를 연결합니다.
 
 
-![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-07-03_19.37.07.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Notion%20API%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%ED%8F%AC%EC%8A%A4%ED%8C%85%20%EA%B4%80%EB%A6%AC/5.png)
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Notion%20API%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%ED%8F%AC%EC%8A%A4%ED%8C%85%20%EA%B4%80%EB%A6%AC/5.png" %}
 
 
 이후 데이터베이스에 대한 정보를 확인해야 하는데, 데이터베이스 옵션에서 보기 링크 복사 후 붙여넣기를 하면 데이터베이스 아이디를 확인할 수 있는데 이것도 안전한 곳에 보관합니다.
@@ -293,10 +293,10 @@ parent: ${upFolder}`
 
 - `await notion.databases.query` 코드에서 보면 `공개`와 `배포` 칼럼 모두 체크가 되어있는 글만 배포를 진행하도록 했습니다. (관리 편의성을 위해)
 
-![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-10-20_03.23.02.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Notion%20API%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%ED%8F%AC%EC%8A%A4%ED%8C%85%20%EA%B4%80%EB%A6%AC/6.png)
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Notion%20API%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%ED%8F%AC%EC%8A%A4%ED%8C%85%20%EA%B4%80%EB%A6%AC/6.png" %}
 
 
-![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-10-20_03.25.02.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Notion%20API%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%ED%8F%AC%EC%8A%A4%ED%8C%85%20%EA%B4%80%EB%A6%AC/7.png)
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Notion%20API%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%ED%8F%AC%EC%8A%A4%ED%8C%85%20%EA%B4%80%EB%A6%AC/7.png" %}
 
 
 ## **Reference**

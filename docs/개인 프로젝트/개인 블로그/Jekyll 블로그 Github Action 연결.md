@@ -30,7 +30,7 @@ Github 페이지에서 우측 상단 아바타 → Settings → 좌측 메뉴 De
 다음으로, 배포하고자 하는 repository → Settings → 좌측 메뉴 중 Secrets and variables → Actions에서 이전에 생성한 Notion 데이터베이스 아이디와 Notion API 키, AWS 키와 GitHub Token을 등록합니다.
 
 
-![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-07-03_20.44.42.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Jekyll%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20Github%20Action%20%EC%97%B0%EA%B2%B0/1.png)
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Jekyll%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20Github%20Action%20%EC%97%B0%EA%B2%B0/1.png" %}
 
 
 ## Github Action 프로세스
@@ -210,7 +210,7 @@ jobs:
 Notion에서 글을 작성하고 GitHub Action을 실행 하기 위해, [링크](https://www.notion-tools.com/embeds/html)에서 HTML 코드를 작성하여 버튼을 만들 수 있습니다.
 
 
-![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-10-21_16.07.33.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Jekyll%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20Github%20Action%20%EC%97%B0%EA%B2%B0/2.png)
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Jekyll%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20Github%20Action%20%EC%97%B0%EA%B2%B0/2.png" %}
 
 
 {% raw %}
@@ -286,7 +286,7 @@ html
 생성된 링크를 임베드 기능을 이용하면 버튼이 생성되고 버튼을 클릭 시, GitHub Action에서 workflow가 실행되는 모습을 확인할 수 있습니다.
 
 
-![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-10-21_16.09.22.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Jekyll%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20Github%20Action%20%EC%97%B0%EA%B2%B0/3.png)
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Jekyll%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20Github%20Action%20%EC%97%B0%EA%B2%B0/3.png" %}
 
 
 ## Reference
