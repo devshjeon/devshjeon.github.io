@@ -46,34 +46,11 @@ Notion 원본글에 있는 특정 문자가 배포 후에는 해당 정보가 �
 `_scripts/notion-import.js`
 
 
-{% raw %}
-```
-javascript
-function escapeCodeBlock(body) {
-  const regex = /
-```
-{% endraw %}([\s\S]*?){% raw %}
-```
-/g
-  return body.replace(regex, function(match, htmlBlock) {
-    return "{% raw %}\n
-```
-{% endraw %}\n" + htmlBlock + "\n{% raw %}
-```
-\n{% endraw %}"
-  })
-}
-...
-let body = n2m.toMarkdownString(mdBlocks)["parent"]
-// code block escape
-body = escapeCodeBlock(body)
-
-```
-{% endraw %}
+![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-10-23_01.37.35.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Notion%20%EC%BD%94%EB%93%9C%20%EB%B8%94%EB%9F%AD%20%EC%9D%B4%EC%8A%88%20%EA%B0%9C%EC%84%A0/4.png)
 
 
 해당 스크립트 실행 후 코드 블럭 전, 후로 escape 코드가 추가된 것을 확인하였고 배포 후에도 정상적으로 보여지는 것을 확인했습니다.
 
 
-![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-10-23_01.31.16.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Notion%20%EC%BD%94%EB%93%9C%20%EB%B8%94%EB%9F%AD%20%EC%9D%B4%EC%8A%88%20%EA%B0%9C%EC%84%A0/4.png)
+![%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-10-23_01.31.16.png](https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Notion%20%EC%BD%94%EB%93%9C%20%EB%B8%94%EB%9F%AD%20%EC%9D%B4%EC%8A%88%20%EA%B0%9C%EC%84%A0/5.png)
 
