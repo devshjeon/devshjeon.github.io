@@ -63,14 +63,13 @@ function downloadImage(url, fileName) {
 }
 
 async function downloadImages(path, imageUrls) {
-  let number = 1
-  const s3Urls = []
-  for (let url of imageUrls) {
-    const ext = imageUrls[0]?.split(".")?.pop()?.split("?")[0] || "png"
-    const fileName = `${path}/${number}.${ext}`
-    await downloadImage(url, fileName)
+  const s3Urls = await Promise.all(imageUrls.map(async (url, index) => {
+    const ext = url.split(".").pop().split("?")[0] || "png"
+    const fileName = `${path}/${index + 1}.${ext}`
 
+    await downloadImage(url, fileName)
     const fileContent = await fs.promises.readFile(fileName)
+
     const params = {
       Bucket: "devshjeon-blog-images",
       Key: fileName,
@@ -78,9 +77,8 @@ async function downloadImages(path, imageUrls) {
     }
 
     const uploadResult = await s3.upload(params).promise()
-    s3Urls.push(uploadResult.Location)
-    number++
-  }
+    return uploadResult.Location
+  }))
 
   await deleteAllFiles(path)
 
@@ -156,19 +154,16 @@ function slug(str) {
     let hasChild = r.properties?.["메인"]?.["checkbox"] || false
 
     // 작성일
-    let date = moment(r.created_time).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm")
-    // let pDate = r.properties?.["최종수정일"]?.["last_edited_time"]
-    // if (pDate) {
-    //   date = moment(pDate).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm")
-    // }
+    let publishedDate = moment(r.created_time).tz("Asia/Seoul").format("YYYY-MM-DD")
+    let modifiedDate = moment(r.last_edited_time).tz("Asia/Seoul").format("YYYY-MM-DD")
 
     let permalink = ""
     let header = `---
 layout: default
 title: ${title}
 has_children: ${hasChild}
-last_modified_date: ${date}`
-
+published_date: ${publishedDate}
+last_modified_date: ${modifiedDate}`
     if (navOrder) {
       header += `
 nav_order: ${navOrder}`
