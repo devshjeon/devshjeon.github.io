@@ -105,6 +105,13 @@ function escapeCodeBlock(body) {
   })
 }
 
+function convertLazyImage(body) {
+  const regex = /!\[([\s\S]*?)\]\(https:\/\/devshjeon-blog-images([\s\S]*?)\)/g
+  return body.replace(regex, function(match) {
+    return `{% include lazyload.html image_src="${match.split("(")[1].slice(0, -1)}" %}`
+  })
+}
+
 (async () => {
   // ensure directory exists
   const root = `docs`
@@ -216,6 +223,8 @@ permalink: ${permalink}`
       s3Urls = await downloadImages(imagePath, imageUrls)
       body = replaceUrl(body, imageUrls, s3Urls)
     }
+
+    body = convertLazyImage(body)
 
     //writing to file
     const fTitle = `${title}.md`

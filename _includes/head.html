@@ -18,6 +18,7 @@
     if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark-mode');
   </script>
 
+  <script src="{{ '/assets/js/lazysizes.min.js' | relative_url }}"></script>
   <link id="main-css" rel="stylesheet" href="{{ '/assets/css/just-the-docs-default.css' | relative_url }}">
 
   {% if site.ga_tracking != nil %}
