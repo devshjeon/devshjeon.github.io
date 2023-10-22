@@ -4,7 +4,7 @@ layout: table_wrappers
 
 <!DOCTYPE html>
 
-<html lang="{{ site.lang | default: 'en-US' }}">
+<html lang="{{ site.lang | default: 'ko-KR' }}">
 {% include head.html %}
 <body>
   <a class="skip-to-main" href="#main-content">Skip to main content</a>
@@ -35,15 +35,6 @@ layout: table_wrappers
           {% if page.has_children == true and page.has_toc != false %}
             {% include components/children_nav.html %}
           {% endif %}
-
-          <div class="PageNavigation">
-            {% if page.previous.url %}
-            <a class="prev" href="{{page.previous.url}}">&laquo; {{page.previous.title}}</a>
-            {% endif %}
-            {% if page.next.url %}
-            <a class="next" href="{{page.next.url}}">{{page.next.title}} &raquo;</a>
-            {% endif %}
-          </div>
 
           <br />
 
