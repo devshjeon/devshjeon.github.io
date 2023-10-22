@@ -4,7 +4,7 @@ title: Jekyll 블로그 Github Action 연결
 has_children: false
 published_date: 2023-06-27
 last_modified_date: 2023-10-23
-nav_order: 7
+nav_order: 6
 grand_parent: 개인 프로젝트
 parent: 개인 블로그
 permalink: 개인-프로젝트/개인-프로젝트/Jekyll-블로그-Github-Action-연결

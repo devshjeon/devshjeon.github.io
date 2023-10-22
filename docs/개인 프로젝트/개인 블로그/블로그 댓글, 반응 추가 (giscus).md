@@ -4,7 +4,7 @@ title: 블로그 댓글, 반응 추가 (giscus)
 has_children: false
 published_date: 2023-10-19
 last_modified_date: 2023-10-23
-nav_order: 6
+nav_order: 7
 grand_parent: 개인 프로젝트
 parent: 개인 블로그
 permalink: 개인-프로젝트/개인-프로젝트/블로그-댓글,-반응-추가-(giscus)
