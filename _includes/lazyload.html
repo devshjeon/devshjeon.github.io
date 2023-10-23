@@ -1,4 +1,13 @@
 {% if include.image_src %}
-<img data-src="{{include.image_src}}" alt="" title=""
-     class="lazyload" />
+<div class="image-flex">
+  <div class="image-item">
+    <div class="image-item-img">
+      <div class="skeleton_loading">
+        <div class="skeleton_img"></div>
+      </div>
+      <img data-src="{{include.image_src}}" alt="" title="" width="500" height="300" class="lazyload"
+           loading="lazy" />
+    </div>
+  </div>
+</div>
 {% endif %}

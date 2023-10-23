@@ -6,6 +6,7 @@ const path = require("path")
 const fs = require("fs")
 const https = require("https")
 const AWS = require("aws-sdk")
+const sharp = require("sharp")
 // or
 // import {NotionToMarkdown} from "notion-to-md";
 
@@ -65,19 +66,30 @@ function downloadImage(url, fileName) {
 async function downloadImages(path, imageUrls) {
   const s3Urls = await Promise.all(imageUrls.map(async (url, index) => {
     const ext = url.split(".").pop().split("?")[0] || "png"
-    const fileName = `${path}/${index + 1}.${ext}`
+    const format = ext !== "gif" ? "webp" : ext
+    const originalFileName = `${path}/${index + 1}.${ext}`
+    const newFileName = `${path}/${index + 1}.${format}`
 
-    await downloadImage(url, fileName)
-    const fileContent = await fs.promises.readFile(fileName)
+    await downloadImage(url, originalFileName)
+    const fileContent = await fs.promises.readFile(originalFileName)
+    const quality = 50
 
-    const params = {
-      Bucket: "devshjeon-blog-images",
-      Key: fileName,
-      Body: fileContent,
-    }
-
-    const uploadResult = await s3.upload(params).promise()
-    return uploadResult.Location
+    return sharp(fileContent, { limitInputPixels: false })
+      .toFormat(format, { quality })
+      .toBuffer()
+      .then(async (outputBuffer) => {
+        const params = {
+          Bucket: "devshjeon-blog-images",
+          CacheControl: "max-age=25920000",
+          Key: newFileName,
+          Body: outputBuffer,
+        }
+        const uploadResult = await s3.upload(params).promise()
+        return uploadResult.Location
+      })
+      .catch((err) => {
+        console.error("이미지 변환 실패:", err)
+      })
   }))
 
   await deleteAllFiles(path)
