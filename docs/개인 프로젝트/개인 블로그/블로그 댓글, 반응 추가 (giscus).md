@@ -24,7 +24,7 @@ giscus에서 제공하는 [페이지](https://giscus.app/ko)에서 쉽게 설정
 ### 저장소
 
 
-{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%8C%93%EA%B8%80%2C%20%EB%B0%98%EC%9D%91%20%EC%B6%94%EA%B0%80%20%28giscus%29/1.png" %}
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%8C%93%EA%B8%80%2C%20%EB%B0%98%EC%9D%91%20%EC%B6%94%EA%B0%80%20%28giscus%29/1.webp" %}
 
 
 블로그 저장소에 giscus를 추가하려면 다음 조건이 선행되어야 합니다.
@@ -36,7 +36,7 @@ giscus에서 제공하는 [페이지](https://giscus.app/ko)에서 쉽게 설정
 ### 페이지 ↔ Discussions 연결
 
 
-{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%8C%93%EA%B8%80%2C%20%EB%B0%98%EC%9D%91%20%EC%B6%94%EA%B0%80%20%28giscus%29/2.png" %}
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%8C%93%EA%B8%80%2C%20%EB%B0%98%EC%9D%91%20%EC%B6%94%EA%B0%80%20%28giscus%29/2.webp" %}
 
 
 Discussion 제목이 페이지 <title>을 포함을 선택해서 댓글 생성 시 title로 discussion을 생성하도록 해주었습니다.
@@ -45,34 +45,37 @@ Discussion 제목이 페이지 <title>을 포함을 선택해서 댓글 생성 �
 ### Discussion 카테고리
 
 
-{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%8C%93%EA%B8%80%2C%20%EB%B0%98%EC%9D%91%20%EC%B6%94%EA%B0%80%20%28giscus%29/3.png" %}
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%8C%93%EA%B8%80%2C%20%EB%B0%98%EC%9D%91%20%EC%B6%94%EA%B0%80%20%28giscus%29/3.webp" %}
 
 
 카테고리는 GitHub Discussions에서 구분할 카테고리로 `General`을 선택했습니다.
 
 
-{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%8C%93%EA%B8%80%2C%20%EB%B0%98%EC%9D%91%20%EC%B6%94%EA%B0%80%20%28giscus%29/4.png" %}
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%8C%93%EA%B8%80%2C%20%EB%B0%98%EC%9D%91%20%EC%B6%94%EA%B0%80%20%28giscus%29/4.webp" %}
 
 
 ### 기능
 
 
-{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%8C%93%EA%B8%80%2C%20%EB%B0%98%EC%9D%91%20%EC%B6%94%EA%B0%80%20%28giscus%29/5.png" %}
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%8C%93%EA%B8%80%2C%20%EB%B0%98%EC%9D%91%20%EC%B6%94%EA%B0%80%20%28giscus%29/5.webp" %}
 
 
 댓글과 추가로 반응을 남길 수 있도록 `메인 포스트에 반응 남기기` 를 선택했습니다.
 
 
+그리고 성능을 위해 댓글 느리게 불러오기도 선택했습니다.
+
+
 ### 테마
 
 
-{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%8C%93%EA%B8%80%2C%20%EB%B0%98%EC%9D%91%20%EC%B6%94%EA%B0%80%20%28giscus%29/6.png" %}
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%8C%93%EA%B8%80%2C%20%EB%B0%98%EC%9D%91%20%EC%B6%94%EA%B0%80%20%28giscus%29/6.webp" %}
 
 
 ### giscus 사용
 
 
-{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%8C%93%EA%B8%80%2C%20%EB%B0%98%EC%9D%91%20%EC%B6%94%EA%B0%80%20%28giscus%29/7.png" %}
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%8C%93%EA%B8%80%2C%20%EB%B0%98%EC%9D%91%20%EC%B6%94%EA%B0%80%20%28giscus%29/7.webp" %}
 
 
 위에서 선택한 설정이 스크립트 태그 형태로 만들어지고 이를 마크다운 파일을 html 파일로 만들어 주는 부분에 넣어줍니다.
@@ -106,6 +109,7 @@ layout: table_wrappers
         data-input-position="bottom"
         data-theme="light"
         data-lang="ko"
+        data-loading="lazy"
         crossorigin="anonymous"
         async>
 </script>
@@ -124,11 +128,11 @@ layout: table_wrappers
 테스트를 하면 글에 댓글이 잘 구성된 것을 확인할 수 있고, 댓글 입력 시 GitHub Discussions에 입력한 댓글을 확인할 수 있습니다.
 
 
-{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%8C%93%EA%B8%80%2C%20%EB%B0%98%EC%9D%91%20%EC%B6%94%EA%B0%80%20%28giscus%29/8.png" %}
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%8C%93%EA%B8%80%2C%20%EB%B0%98%EC%9D%91%20%EC%B6%94%EA%B0%80%20%28giscus%29/8.webp" %}
 
 
-{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%8C%93%EA%B8%80%2C%20%EB%B0%98%EC%9D%91%20%EC%B6%94%EA%B0%80%20%28giscus%29/9.png" %}
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%8C%93%EA%B8%80%2C%20%EB%B0%98%EC%9D%91%20%EC%B6%94%EA%B0%80%20%28giscus%29/9.webp" %}
 
 
-{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%8C%93%EA%B8%80%2C%20%EB%B0%98%EC%9D%91%20%EC%B6%94%EA%B0%80%20%28giscus%29/10.png" %}
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%8C%93%EA%B8%80%2C%20%EB%B0%98%EC%9D%91%20%EC%B6%94%EA%B0%80%20%28giscus%29/10.webp" %}
 

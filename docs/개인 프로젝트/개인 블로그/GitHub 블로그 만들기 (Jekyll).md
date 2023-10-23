@@ -111,7 +111,7 @@ $ bundle exec jekyll serve
 실행이 완료되면 [http://127.0.0.1:4000/](http://127.0.0.1:4000/) 로 접속해 아래 화면을 볼 수 있습니다.
 
 
-{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/GitHub%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%20%28Jekyll%29/1.png" %}
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/GitHub%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%20%28Jekyll%29/1.webp" %}
 
 
 ## **Reference**

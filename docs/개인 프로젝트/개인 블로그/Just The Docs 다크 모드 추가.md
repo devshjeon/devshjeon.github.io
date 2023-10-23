@@ -94,7 +94,7 @@ $logo: "{{ site.logo | relative_url }}";
 위 코드에서 color_scheme 값에 따라 `color_schemes` 폴더에 있는 scss 파일을 읽고 있습니다.
 
 
-{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Just%20The%20Docs%20%EB%8B%A4%ED%81%AC%20%EB%AA%A8%EB%93%9C%20%EC%B6%94%EA%B0%80/1.png" %}
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Just%20The%20Docs%20%EB%8B%A4%ED%81%AC%20%EB%AA%A8%EB%93%9C%20%EC%B6%94%EA%B0%80/1.webp" %}
 
 
 하지만 이는 처음 구동시에만 적용이 가능하고, 브라우저에서 버튼으로 컨트롤 할 수 없었습니다. 
@@ -103,7 +103,7 @@ $logo: "{{ site.logo | relative_url }}";
 저와 같은 고민을 하는 사람이 있을 것으로 생각해서 GitHub Issues 탭을 검색하다 다크 모드를 적용했다는 [댓글](https://github.com/just-the-docs/just-the-docs/issues/1223#issuecomment-1509704703)을 발견했습니다.
 
 
-{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Just%20The%20Docs%20%EB%8B%A4%ED%81%AC%20%EB%AA%A8%EB%93%9C%20%EC%B6%94%EA%B0%80/2.png" %}
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Just%20The%20Docs%20%EB%8B%A4%ED%81%AC%20%EB%AA%A8%EB%93%9C%20%EC%B6%94%EA%B0%80/2.webp" %}
 
 
 위 사이트 [저장소](https://github.com/mmcesim/mmcesim.org)를 확인 후 해당 [commit](https://github.com/devshjeon/devshjeon.github.io/commit/6210d72e740f6a36f527cc4b1239b00cc0d3b35c)을 적용해서 다크 모드를 적용했습니다.
