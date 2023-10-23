@@ -3,7 +3,7 @@ layout: default
 title: Jekyll 블로그 Github Action 연결
 has_children: false
 published_date: 2023-06-27
-last_modified_date: 2023-10-23
+last_modified_date: 2023-10-24
 nav_order: 6
 grand_parent: 개인 프로젝트
 parent: 개인 블로그
@@ -207,7 +207,7 @@ jobs:
 ## GitHub Action 실행 버튼 생성
 
 
-Notion에서 글을 작성하고 GitHub Action을 실행 하기 위해, [링크](https://www.notion-tools.com/embeds/html)에서 HTML 코드를 작성하여 버튼을 만들 수 있습니다.
+Notion에서 글을 작성하고 GitHub Action을 실행 하기 위해, 링크([https://www.notion-tools.com/embeds/html](https://www.notion-tools.com/embeds/html))에서 HTML 코드를 작성하여 버튼을 만들 수 있습니다.
 
 
 {% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Jekyll%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20Github%20Action%20%EC%97%B0%EA%B2%B0/2.webp" %}
