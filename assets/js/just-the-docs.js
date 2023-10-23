@@ -605,7 +605,7 @@ jtd.onReady(function(){
     document.querySelectorAll(".skeleton_loading").forEach(element => {
       element.classList.toggle("fade")
     })
-  }, 2000)
+  }, 1000)
 });
 
 // Copy button on code
