@@ -66,7 +66,7 @@ function downloadImage(url, fileName) {
 async function downloadImages(path, imageUrls) {
   const s3Urls = await Promise.all(imageUrls.map(async (url, index) => {
     const ext = url.split(".").pop().split("?")[0] || "png"
-    const format = ext !== "gif" ? "webp" : ext
+    const format = "webp"
     const originalFileName = `${path}/${index + 1}.${ext}`
     const newFileName = `${path}/${index + 1}.${format}`
 
@@ -74,7 +74,7 @@ async function downloadImages(path, imageUrls) {
     const fileContent = await fs.promises.readFile(originalFileName)
     const quality = 50
 
-    return sharp(fileContent, { limitInputPixels: false })
+    return sharp(fileContent, { limitInputPixels: false, pages: -1 })
       .toFormat(format, { quality })
       .toBuffer()
       .then(async (outputBuffer) => {
