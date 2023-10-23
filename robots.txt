@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://devshjeon.github.io/sitemap.xml
+Host: https://devshjeon.github.io/
