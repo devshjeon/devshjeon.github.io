@@ -194,7 +194,7 @@ body {
   left: 0;
   padding-top: $sp-4;
   padding-bottom: $sp-4;
-  color: $grey-dk-000;
+  color: $footer-color;
   @include fs-2;
 
   @include mq(md) {
@@ -212,6 +212,77 @@ body {
 
 .giscus-frame {
   background-color: white;
+  border-radius: 0.5rem;
   padding-left: 10px;
   padding-right: 10px;
+}
+
+/*========스켈레톤 애니메이션 시작========*/
+.image-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: justify;
+}
+@media (max-width: 767.98px) {
+  .image-flex {
+    display: grid;
+  }
+}
+.image-item {
+  padding: 1rem;
+}
+.image-item-img {
+  position: relative;
+  width: 100%;
+}
+
+/*스켈레톤 메인 컨테이너*/
+.skeleton_loading {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-color);
+  opacity: 1;
+  transition: opacity 1s;
+}
+.skeleton_loading.fade {
+  opacity: 0;
+}
+/* 스켈레톤 이미지 */
+.skeleton_img {
+  width: 100%;
+  height: 100%;
+}
+
+/* 스켈레톤 텍스트 */
+.skeleton_text {
+  margin-bottom: 0.5rem;
+  height: 1rem;
+}
+.skeleton_text:nth-child(1) {
+  width: 50%;
+  height: 1.5rem;
+}
+.skeleton_text:nth-child(2) {
+  width: 20%;
+  height: 0.8rem;
+}
+.skeleton_text:last-child {
+  width: 80%;
+}
+
+.skeleton_loading * {
+  background: linear-gradient(120deg, #e5e5e5 30%, #f0f0f0 38%, #f0f0f0 40%, #e5e5e5 48%);
+  border-radius: 0.5rem;
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  animation: load 1s infinite;
+}
+
+@keyframes load {
+  100% {
+    background-position: -100% 0;
+  }
 }
