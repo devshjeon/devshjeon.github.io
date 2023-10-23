@@ -39,7 +39,7 @@ function initNav() {
   const mainHeader = document.getElementById('main-header');
   const menuButton = document.getElementById('menu-button');
   
-  disableHeadStyleSheets();
+  // disableHeadStyleSheets();
 
   jtd.addEvent(menuButton, 'click', function(e){
     e.preventDefault();
@@ -77,7 +77,7 @@ function initNav() {
 // so disableHeadStyleSheet() needs to access it by its id.
 
 function disableHeadStyleSheets() {
-  // document.styleSheets[1].disabled = true;
+  document.styleSheets[0].disabled = true;
   const activation = document.getElementById('jtd-nav-activation');
   if (activation) {
     activation.disabled = true;
@@ -468,21 +468,6 @@ function searchLoaded(index, docs) {
 }
 {%- endif %}
 
-// Switch theme
-
-// jtd.getTheme = function() {
-//   var cssFileHref = document.querySelector('[rel="stylesheet"]').getAttribute('href');
-//   return cssFileHref.substring(cssFileHref.lastIndexOf('-') + 1, cssFileHref.length - 4);
-// }
-//
-// jtd.setTheme = function(theme) {
-//   var cssFile = document.querySelector('[rel="stylesheet"]');
-//   cssFile.setAttribute('href', '{{ "assets/css/just-the-docs-" | relative_url }}' + theme + '.css');
-// }
-
-// Note: pathname can have a trailing slash on a local jekyll server
-// and not have the slash on GitHub Pages
-
 function navLink() {
   var href = document.location.pathname;
   if (href.endsWith('/') && href != '/') {
@@ -522,6 +507,7 @@ function activateNav() {
 }
 
 function darkMode() {
+  if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add("dark-mode")
   const toggleDarkMode = document.getElementById("theme-toggle")
 
   if (localStorage.getItem("theme") === "dark") {
@@ -553,8 +539,37 @@ function darkMode() {
       document.documentElement.classList.remove("dark-mode")
     }
     const cssFile = document.querySelector("[id=\"main-css\"]")
-    cssFile.setAttribute("href", "/assets/css/just-the-docs-" + theme + ".css")
+    if (!cssFile.href.includes(theme)) {
+      cssFile.setAttribute("href", "/assets/css/just-the-docs-" + theme + ".css")
+    }
   }
+}
+
+function tagManager() {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  {% for ga_property in ga_tracking_ids %}
+  gtag('config', '{{ ga_property }}'{% unless site.ga_tracking_anonymize_ip == nil %}, { 'anonymize_ip': true }{% endunless %});
+  {% endfor %}
+}
+
+function loadScript(url) {
+  return new Promise((resolve, reject) => {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+    script.onload = resolve;
+    script.onerror = () => reject(`스크립트 로드 중에 오류가 발생했습니다: ${url}`);
+    document.head.appendChild(script);
+  });
+}
+
+function loadScriptsSequentially(urls) {
+  return urls.reduce((chain, url) => {
+    return chain.then(() => loadScript(url));
+  }, Promise.resolve());
 }
 
 // Document ready
@@ -562,11 +577,35 @@ function darkMode() {
 jtd.onReady(function(){
   initNav();
   {%- if site.search_enabled != false %}
-  initSearch();
+  const scriptURLs = [
+    '/assets/js/vendor/lunr.min.js',
+    '/assets/js/vendor/lunr.stemmer.support.min.js',
+    '/assets/js/vendor/lunr.multi.min.js',
+    '/assets/js/vendor/lunr.ko.min.js'
+  ];
+  loadScriptsSequentially(scriptURLs)
+  .then(() => {
+    initSearch();
+  })
+  .catch(error => {
+    console.error(error);
+  });
+  {%- endif %}
+  {%- if site.ga_tracking != nil %}
+  {% assign ga_tracking_ids = site.ga_tracking | split: "," %}
+  loadScript('https://www.googletagmanager.com/gtag/js?id={{ ga_tracking_ids.first }}', function() {
+    console.log('google tag manager loaded');
+  })
   {%- endif %}
   activateNav();
   scrollNav();
   darkMode();
+  tagManager();
+  window.onload = setTimeout(() => {
+    document.querySelectorAll(".skeleton_loading").forEach(element => {
+      element.classList.toggle("fade")
+    })
+  }, 2000)
 });
 
 // Copy button on code
