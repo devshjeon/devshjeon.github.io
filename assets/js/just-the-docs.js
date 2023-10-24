@@ -576,8 +576,9 @@ function loadScriptsSequentially(urls) {
 
 jtd.onReady(function(){
   initNav();
-  {%- if site.search_enabled != false %}
   const scriptURLs = [
+    '/assets/js/fslightbox.js',
+    '/assets/js/lazysizes.min.js',
     '/assets/js/vendor/lunr.min.js',
     '/assets/js/vendor/lunr.stemmer.support.min.js',
     '/assets/js/vendor/lunr.multi.min.js',
@@ -590,12 +591,9 @@ jtd.onReady(function(){
   .catch(error => {
     console.error(error);
   });
-  {%- endif %}
   {%- if site.ga_tracking != nil %}
   {% assign ga_tracking_ids = site.ga_tracking | split: "," %}
-  loadScript('https://www.googletagmanager.com/gtag/js?id={{ ga_tracking_ids.first }}', function() {
-    console.log('google tag manager loaded');
-  })
+  loadScript('https://www.googletagmanager.com/gtag/js?id={{ ga_tracking_ids.first }}')
   {%- endif %}
   activateNav();
   scrollNav();
@@ -605,7 +603,7 @@ jtd.onReady(function(){
     document.querySelectorAll(".skeleton_loading").forEach(element => {
       element.classList.toggle("fade")
     })
-  }, 1000)
+  }, 300)
 });
 
 // Copy button on code

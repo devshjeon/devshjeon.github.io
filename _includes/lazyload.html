@@ -2,10 +2,12 @@
 <div class="image-flex">
   <div class="image-item">
     <div class="image-item-img">
-      <div class="skeleton_loading">
-        <div class="skeleton_img"></div>
-      </div>
-      <img data-src="{{include.image_src}}" alt="" title="" width="500" height="300" class="lazyload" />
+      <a data-fslightbox shref="{{include.image_src}}">
+        <div class="skeleton_loading">
+          <div class="skeleton_img"></div>
+        </div>
+        <img data-src="{{include.image_src}}" alt="" title="" width="500" height="300" class="lazyload" />
+      </a>
     </div>
   </div>
 </div>
