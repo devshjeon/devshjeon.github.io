@@ -560,45 +560,24 @@ function loadScript(url) {
     var script = document.createElement('script');
     script.type = 'text/javascript';
     script.src = url;
+    script.defer = true;
     script.onload = resolve;
     script.onerror = () => reject(`스크립트 로드 중에 오류가 발생했습니다: ${url}`);
     document.head.appendChild(script);
   });
 }
 
-function loadScriptsSequentially(urls) {
-  return urls.reduce((chain, url) => {
-    return chain.then(() => loadScript(url));
-  }, Promise.resolve());
-}
-
-// Document ready
-
 jtd.onReady(function(){
   initNav();
-  const scriptURLs = [
-    '/assets/js/fslightbox.js',
-    '/assets/js/lazysizes.min.js',
-    '/assets/js/vendor/lunr.min.js',
-    '/assets/js/vendor/lunr.stemmer.support.min.js',
-    '/assets/js/vendor/lunr.multi.min.js',
-    '/assets/js/vendor/lunr.ko.min.js'
-  ];
-  loadScriptsSequentially(scriptURLs)
-  .then(() => {
-    initSearch();
-  })
-  .catch(error => {
-    console.error(error);
-  });
-  {%- if site.ga_tracking != nil %}
-  {% assign ga_tracking_ids = site.ga_tracking | split: "," %}
-  loadScript('https://www.googletagmanager.com/gtag/js?id={{ ga_tracking_ids.first }}')
-  {%- endif %}
+  initSearch();
   activateNav();
   scrollNav();
   darkMode();
-  tagManager();
+  {%- if site.ga_tracking != nil %}
+  {% assign ga_tracking_ids = site.ga_tracking | split: "," %}
+    loadScript('https://www.googletagmanager.com/gtag/js?id={{ ga_tracking_ids.first }}')
+    tagManager();
+  {%- endif %}
   window.onload = setTimeout(() => {
     document.querySelectorAll(".skeleton_loading").forEach(element => {
       element.classList.toggle("fade")

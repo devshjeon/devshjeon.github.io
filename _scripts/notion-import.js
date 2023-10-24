@@ -229,10 +229,9 @@ permalink: ${permalink}`
 
     // download image
     const imageUrls = findImageUrl(body)
-    let s3Urls = []
     if (imageUrls.length > 0) {
       fs.mkdirSync(imagePath, { recursive: true })
-      s3Urls = await downloadImages(imagePath, imageUrls)
+      const s3Urls = await downloadImages(imagePath, imageUrls)
       body = replaceUrl(body, imageUrls, s3Urls)
     }
 
