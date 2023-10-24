@@ -135,7 +135,7 @@ First Contnetful Paint, Largest Contentful Paint, Total Blocking Time에서 성�
 {% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EC%84%B1%EB%8A%A5%20%EB%B6%84%EC%84%9D%20%28Lighthouse%29/3.webp" %}
 
 
-원인을 살펴보니 주로 아래와 같은
+원인을 살펴보니 주로 아래와 같이 정리
 
 - AWS S3 이미지 로드 성능 저하 (no-cache, size)
 - 리소스 연속 요청으로 인한 rendering blocking
