@@ -108,13 +108,10 @@ Cumulative Layout Shift
 레이아웃 변경 점수는 영향 비율 * 거리 비율로 계산
 
 
-<계산 예시>
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EC%84%B1%EB%8A%A5%20%EB%B6%84%EC%84%9D%20%28Lighthouse%29/1.webp" %}
 
 
-	{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EC%84%B1%EB%8A%A5%20%EB%B6%84%EC%84%9D%20%28Lighthouse%29/1.webp" %}
-
-
-	위의 사진에서 영향 비율은 빨간색 점선 영역인 0.75 (75%)이고 거리 비율은 회색 영역이 이동한 거리인 0.25(25%)로 레이아웃 변경 점수는 0.75 * 0.25 = 0.1875입니다.
+위의 사진에서 영향 비율은 빨간색 점선 영역인 0.75 (75%)이고 거리 비율은 회색 영역이 이동한 거리인 0.25(25%)로 레이아웃 변경 점수는 0.75 * 0.25 = 0.1875입니다.
 
 
 ## Performance 분석
@@ -141,7 +138,7 @@ First Contnetful Paint, Largest Contentful Paint, Total Blocking Time에서 성�
 - 리소스 연속 요청으로 인한 rendering blocking
 - minify되지 않은 리소스
 
-## 이미지 로딩 개선
+### 이미지 로딩 개선
 
 
 이미지를 불러오는데 가장 성능이 저하되기 때문에 성능 개선할 부분이 많이 있었습니다.
@@ -152,6 +149,9 @@ First Contnetful Paint, Largest Contentful Paint, Total Blocking Time에서 성�
 4. CLS 개선을 위한 이미지 스켈레톤 적용
 
 ## 리소스 로딩 개선
+
+
+리소스를 불러오는 방식도 Rendering Blocking을 발생시켜 개선할 부분이 있었습니다.
 
 1. 바로 필요없는 리소스에 대해 의도적으로 로딩을 지연
 
