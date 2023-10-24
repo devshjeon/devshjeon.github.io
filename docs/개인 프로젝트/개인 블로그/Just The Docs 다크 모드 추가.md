@@ -3,7 +3,7 @@ layout: default
 title: Just The Docs 다크 모드 추가
 has_children: false
 published_date: 2023-10-22
-last_modified_date: 2023-10-23
+last_modified_date: 2023-10-24
 nav_order: 8
 grand_parent: 개인 프로젝트
 parent: 개인 블로그

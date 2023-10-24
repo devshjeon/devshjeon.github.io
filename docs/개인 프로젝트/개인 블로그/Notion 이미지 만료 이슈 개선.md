@@ -3,7 +3,7 @@ layout: default
 title: Notion 이미지 만료 이슈 개선
 has_children: false
 published_date: 2023-07-03
-last_modified_date: 2023-10-23
+last_modified_date: 2023-10-24
 nav_order: 5
 grand_parent: 개인 프로젝트
 parent: 개인 블로그

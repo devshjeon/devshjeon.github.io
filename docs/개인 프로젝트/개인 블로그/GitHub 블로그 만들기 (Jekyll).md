@@ -3,7 +3,7 @@ layout: default
 title: GitHub 블로그 만들기 (Jekyll)
 has_children: false
 published_date: 2023-06-27
-last_modified_date: 2023-10-23
+last_modified_date: 2023-10-24
 nav_order: 2
 grand_parent: 개인 프로젝트
 parent: 개인 블로그
