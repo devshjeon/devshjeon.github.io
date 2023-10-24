@@ -26,8 +26,9 @@ Lighthouse는 구글에서 개발한 웹 페이지의 품질을 개선하기 위
 
 성능의 지표는 5가지가 있습니다.
 
-<details>
-<summary>First Contentful Paint</summary>
+
+First Contentful Paint
+
 - 사용자가 페이지로 이동한 후 브라우저가 첫 번째 DOM 콘텐츠를 렌더링 하는데 걸리는 시간
 - 페이지의 `<canvas>` 및 SVG는 DOM 콘텐츠로 간주되고 iframe 안의 모든 요소를 포함되지 않습니다.
 
@@ -44,10 +45,8 @@ Lighthouse는 구글에서 개발한 웹 페이지의 품질을 개선하기 위
 [FCP 개선 방법](https://developer.chrome.com/docs/lighthouse/performance/speed-index/#how-to-improve-your-speed-index-score)
 
 
-</details>
+Speed Index
 
-<details>
-<summary>Speed Index</summary>
 - 페이지 로딩 중에 콘텐츠가 시각적으로 얼마나 빨리 표시되는지 측정
 - 브라우저에서 페이지가 로딩되는 동영상을 캡처하여 프레임 사이의 시각적 진행 상황을 계산 후 Speedline Node.js 모듈을 사용하여 Speed Index 점수를 생성
 
@@ -64,10 +63,8 @@ Lighthouse는 구글에서 개발한 웹 페이지의 품질을 개선하기 위
 [SI 개선 방법](https://developer.chrome.com/docs/lighthouse/performance/speed-index/#how-to-improve-your-speed-index-score)
 
 
-</details>
+Total Blocking Time
 
-<details>
-<summary>Total Blocking Time</summary>
 - 마우스 클릭, 화면 탭 또는 키보드 누름과 같은 사용자 입력에 대한 페이지가 응답하지 못하도록 차단된 총 시간을 측정
 
 **평가 기준**
@@ -83,10 +80,8 @@ Lighthouse는 구글에서 개발한 웹 페이지의 품질을 개선하기 위
 [TBT 개선 방법](https://developer.chrome.com/docs/lighthouse/performance/lighthouse-total-blocking-time/#how-to-improve-your-tbt-score)
 
 
-</details>
+Largest Contentful Paint
 
-<details>
-<summary>Largest Contentful Paint</summary>
 - 뷰포트에서 가장 큰 콘텐츠 요소가 화면에 렌더딩되는 시점을 측정
 - 이는 페이지의 주요 콘텐츠가 사용자에게 표시되는 시점과 비슷
 
@@ -103,10 +98,8 @@ Lighthouse는 구글에서 개발한 웹 페이지의 품질을 개선하기 위
 [LCP 개선 방법](https://developer.chrome.com/docs/lighthouse/performance/lighthouse-largest-contentful-paint/#how-to-improve-your-lcp-score)
 
 
-</details>
+Cumulative Layout Shift
 
-<details>
-<summary>Cumulative Layout Shift</summary>
 - 페이지에서 발생한 예상치 못한 레이아웃 변경에 관한 점수의 최대 버스트 점수
 
 **평가 방법**
@@ -122,9 +115,6 @@ Lighthouse는 구글에서 개발한 웹 페이지의 품질을 개선하기 위
 
 
 	위의 사진에서 영향 비율은 빨간색 점선 영역인 0.75 (75%)이고 거리 비율은 회색 영역이 이동한 거리인 0.25(25%)로 레이아웃 변경 점수는 0.75 * 0.25 = 0.1875입니다.
-
-
-</details>
 
 
 ## Performance 분석
