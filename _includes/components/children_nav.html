@@ -27,7 +27,7 @@
 <ul>
 {% for child in sorted_pages %}
   <li>
-    <a href="{{ child.url | relative_url }}">{{ child.title }}</a>{% if child.summary %} - {{ child.summary }}{% endif %}
+    <a href="{{ child.url | relative_url }}"><p class="children-link">{%- if child.has_children == false and child.published_date != nil %}[{{ child.published_date }}]{% endif %} {{ child.title }}</p></a>{% if child.summary %} - {{ child.summary }}{% endif %}
   </li>
 {% endfor %}
 </ul>
