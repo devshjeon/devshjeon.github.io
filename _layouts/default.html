@@ -36,6 +36,14 @@ layout: table_wrappers
             {% include components/children_nav.html %}
           {% endif %}
 
+          {% include components/prev_next.html
+          include_parent=page.parent
+          include_grand_parent=page.grand_parent
+          include_has_children=page.has_children
+          include_nav_order=page.nav_order
+          %}
+
+          <br />
           <br />
 
           {% if page.has_children == false %}
