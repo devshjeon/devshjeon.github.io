@@ -77,7 +77,11 @@ function initNav() {
 // so disableHeadStyleSheet() needs to access it by its id.
 
 function disableHeadStyleSheets() {
-  document.styleSheets[0].disabled = true;
+  const headNav = document.getElementById('jtd-head-nav-stylesheet');
+  if (headNav) {
+    headNav.disabled = true;
+  }
+
   const activation = document.getElementById('jtd-nav-activation');
   if (activation) {
     activation.disabled = true;
