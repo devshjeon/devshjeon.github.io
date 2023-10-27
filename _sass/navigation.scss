@@ -202,6 +202,11 @@
 .breadcrumb-nav {
   @include mq(md) {
     margin-top: -$sp-4;
+    display: block !important;
+  }
+
+  @include mq(xs) {
+    display: none;
   }
 }
 
