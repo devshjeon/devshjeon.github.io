@@ -487,7 +487,6 @@ function scrollNav() {
   if (targetLink) {
     const rect = targetLink.getBoundingClientRect();
     document.getElementById('site-nav').scrollBy(0, rect.top - 3*rect.height);
-    targetLink.removeAttribute('href');
   }
 }
 
