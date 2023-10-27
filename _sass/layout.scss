@@ -379,3 +379,8 @@ body {
   margin-top: 0.2rem;
   margin-bottom: 0.2rem;
 }
+
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}
