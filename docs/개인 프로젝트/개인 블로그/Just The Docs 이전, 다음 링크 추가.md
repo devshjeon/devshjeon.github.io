@@ -211,9 +211,9 @@ scss
 ```
 scss
 ...
-$prev-next-color: $grey-dk-250;
-$prev-next-font-color: $white;
-$prev-next-arrow-color: $blue-000;
+$prev-next-color: $grey-lt-000 !default;
+$prev-next-font-color: $grey-dk-200 !default;
+$prev-next-arrow-color: $blue-100 !default;
 
 ```
 {% endraw %}
