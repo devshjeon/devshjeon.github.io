@@ -16,7 +16,7 @@
 title: Kane's Blog
 description: Easy come, Easy go
 baseurl: "/" # the subpath of your site, e.g. /blog
-url: "https://devshjeon.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://devshjeon.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 repository: devshjeon/devshjeon # for github-metadata
 
 permalink: pretty
