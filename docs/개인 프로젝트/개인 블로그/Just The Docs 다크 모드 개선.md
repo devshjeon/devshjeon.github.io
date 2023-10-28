@@ -1,0 +1,402 @@
+---
+layout: default
+title: Just The Docs 다크 모드 개선
+has_children: false
+published_date: 2023-10-29
+last_modified_date: 2023-10-29
+nav_order: 15
+grand_parent: 개인 프로젝트
+parent: 개인 블로그
+permalink: 개인-프로젝트/개인-프로젝트/Just-The-Docs-다크-모드-개선
+---
+## P**rerequisite**
+
+- Just The Docs 다크 모드 추가
+
+이전에 적용한 다크모드가 잘 동작하는 것처럼 보였지만 사용을 하다보니 몇가지 이슈를 발견했습니다.
+
+
+## 다크모드 적용 후 캐시가 만료되면 새로고침 시 깜빡임 이슈
+
+
+기본 모드가 라이트 모드로 되어있어 캐시를 사용하지 않으면 최초 라이트 모드로 진입 후 다크모드로 전환되어 사용자가 느끼기에 화면이 깜빡이는 것처럼 보여지는 이슈가 있습니다.
+
+
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Just%20The%20Docs%20%EB%8B%A4%ED%81%AC%20%EB%AA%A8%EB%93%9C%20%EA%B0%9C%EC%84%A0/1.webp" %}
+
+
+## 다크모드 적용할 때마다 CSS 로드 이슈
+
+
+다크모드를 적용할 때마다 CSS 파일을 로드하는 이슈도 존재했습니다.
+
+
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Just%20The%20Docs%20%EB%8B%A4%ED%81%AC%20%EB%AA%A8%EB%93%9C%20%EA%B0%9C%EC%84%A0/2.webp" %}
+
+
+다크모드는 자주 사용하는 기능이 아니지만, 불필요한 리소스 로드는 성능을 저하시키기 때문에 더 효율적인 방법을 찾아야 할 필요성을 느꼈습니다.
+
+
+## data-theme 적용
+
+
+[velopert님의 블로그](https://velog.io/@velopert/velog-dark-mode)에서 벨로그에 적용된 다크 모드를 참고했고, 저는 시스템 테마는 제외하고 CSS Variable을 사용하는 방법으로 다크 모드 기능을 사용할 수 있도록 수정했습니다.
+
+
+벨로그에 적용된 다크모드는 body 태그에 data-theme 속성이 적용되었는데, data-theme에 관련된 다른 글에서는 html 태그에 data-theme를 적용한 경우가 있었습니다. 
+
+
+html 태그에 적용된 경우 자바스크립트 코드에서 동적으로 data-theme를 넣어주어야 하는데 자바스크립트 코드가 실행되기 전에 이미 html 태그가 생성되어 기본 모드가 먼저 적용된 후에 설정한 모드가 적용되어 깜빡이는 현상이 발생할 수 있습니다.
+
+
+반면 body 태그에 적용하면, head 부분에서 자바스크립트 코드가 실행되도록 실행 순서를 컨트롤 해주면 body 속성을 컨트롤 할 수 있어 깜빡임 없이 다크 모드를 구성할 수 있습니다.
+
+
+## 분석
+
+
+제가 적용한 다크 모드는 `head.html` 에서 `just-the-docs-default.css` 를 로드하고 있습니다.
+
+
+{% raw %}
+```
+html
+...
+<link id="main-css" rel="stylesheet" href="{{ '/assets/css/just-the-docs-default.css' | relative_url }}">
+
+```
+{% endraw %}
+
+
+컴파일 되기 전인 `just-the-docs-default.scss` 에서는 `color_scheme` 값이 없으면 light 모드로 적용되도록 되어있고 현재 제가 사용중인 설정입니다.
+
+
+{% raw %}
+```
+scss
+---
+---
+{% if site.color_scheme and site.color_scheme != "nil" and site.color_scheme != "auto" %}
+  {% assign color_scheme = site.color_scheme %}
+{% else %}
+  {% assign color_scheme = "light" %}
+{% endif %}
+{% include css/just-the-docs.scss.liquid color_scheme=color_scheme %}
+
+```
+{% endraw %}
+
+
+`jsut-the-docs.scss.liquid` 는 `color_scheme` 값을 기준으로 dark, light를 구분해서 파일을 가져오도록 구성되어있습니다.
+
+
+{% raw %}
+```
+scss
+{% if site.logo %}
+$logo: "{{ site.logo | relative_url }}";
+{% endif %}
+@import "./support/support";
+@import "./custom/setup";
+@import "./color_schemes/light";
+{% unless include.color_scheme == "light" %}
+@import "./color_schemes/{{ include.color_scheme }}";
+{% endunless %}
+@import "./modules";
+{% include css/callouts.scss.liquid color_scheme = include.color_scheme %}
+{% include css/custom.scss.liquid %}
+
+```
+{% endraw %}
+
+
+`dark.scss`, `light.scss` 파일은 동일한 변수에 다른 값이 설정되어 있어 태그에서 해당 값을 사용해 color를 구성하고 있는 것을 확인했습니다.
+
+
+{% raw %}
+```
+scss
+// light.scss
+$color-scheme: light !default;
+$body-background-color: $white !default;
+$body-heading-color: $grey-dk-300 !default;
+$body-text-color: $grey-dk-100 !default;
+$link-color: $purple-000 !default;
+$nav-child-link-color: $grey-dk-100 !default;
+$sidebar-color: $grey-lt-000 !default;
+$base-button-color: #f7f7f7 !default;
+$btn-primary-color: $purple-100 !default;
+$code-background-color: $grey-lt-000 !default;
+$feedback-color: darken($sidebar-color, 3%) !default;
+$table-background-color: $white !default;
+$search-background-color: $white !default;
+$search-result-preview-color: $grey-dk-000 !default;
+
+// dark.scss
+$color-scheme: dark;
+$body-background-color: $grey-dk-300;
+$body-heading-color: $grey-lt-000;
+$body-text-color: $grey-lt-300;
+$link-color: $blue-000;
+$nav-child-link-color: $grey-dk-000;
+$sidebar-color: $grey-dk-300;
+$base-button-color: $grey-dk-250;
+$btn-primary-color: $blue-200;
+$code-background-color: #31343f; // OneDarkJekyll default for syntax-one-dark-vivid
+$code-linenumber-color: #dee2f7; // OneDarkJekyll .nf for syntax-one-dark-vivid
+$feedback-color: darken($sidebar-color, 3%);
+$table-background-color: $grey-dk-250;
+$search-background-color: $grey-dk-250;
+$search-result-preview-color: $grey-dk-000;
+$border-color: $grey-dk-200;
+
+```
+{% endraw %}
+
+
+## 전략
+
+
+data-theme 방식을 적용하려면 하나의 파일에 dark, light 설정을 모두 하고 토큰 버튼 클릭 시 data-theme 값을 변경해서 태그 color를 변경해 주어야 했습니다.
+
+
+그러기 위해 just-the-docs.scss라는 파일을 새로 만들고 연관된 파일들을 수정했습니다.
+
+
+`assets/css/just-the-docs.scss`
+
+
+{% raw %}
+```
+scss
+---
+---
+{% include css/just-the-docs.scss.liquid %}
+
+```
+{% endraw %}
+
+
+`_includes/css/just-the-docs.scss.liquid`
+
+
+{% raw %}
+```
+scss
+{% if site.logo %}
+$logo: "{{ site.logo | relative_url }}";
+{% endif %}
+
+@import "./support/support";
+@import "./color_schemes/default";
+
+@import "./modules";
+{% include css/callouts.scss.liquid color_scheme = light %}
+
+```
+{% endraw %}
+
+
+`_saas/color_schemes/default.scss`
+
+
+{% raw %}
+```
+scss
+body[data-theme="light"] {
+  --body-background-color: #{$white};
+  --body-heading-color: #{$grey-dk-300};
+  --body-text-color: #{$grey-dk-100};
+  --nav-child-link-color: #{$grey-dk-100};
+  --sidebar-color: #{$grey-lt-000};
+  --btn-primary-color: #{$purple-100};
+  --code-background-color: #{$grey-lt-000};
+  --code-linenumber-color: #{#dee2f7};
+  --feedback-color: #{darken($grey-lt-000, 3%)};
+  --feedback-color-1: #{#ebedf5};
+  --feedback-color-2: #{#ebedf5cc};
+  --feedback-color-3: #{#ebedf500};
+  --table-background-color: #{$white};
+  --search-background-color: #{$white};
+  --search-result-preview-color: #{$grey-dk-000};
+  --border-color: #{$grey-lt-100};
+  --footer-color: #{$grey-dk-100};
+  --prev-next-color: #{$grey-lt-000};
+  --prev-next-font-color: #{$grey-dk-200};
+  --prev-next-arrow-color: #{$blue-100};
+  --link-color: #{$blue-100};
+  --zeroclipboard-is-hover: #{darken($blue-100, 2%)};
+  --base-button-color: #{#f7f7f7};
+  --zeroclipboard-is-active-1: #{darken(#f7f7f7, 1%)};
+  --zeroclipboard-is-active-3: #{darken(#f7f7f7, 3%)};
+  --zeroclipboard-is-active-4: #{darken($blue-100, 4%)};
+}
+
+body[data-theme="dark"] {
+  --body-background-color: #{$grey-dk-300};
+  --body-heading-color: #{$grey-lt-000};
+  --body-text-color: #{$grey-lt-300};
+  --nav-child-link-color: #{$grey-dk-000};
+  --sidebar-color: #{$grey-dk-300};
+  --btn-primary-color: #{$blue-200};
+  --code-background-color: #{#31343f};
+  --code-linenumber-color: #{#dee2f7};
+  --feedback-color: #{darken($grey-dk-300, 3%)};
+  --feedback-color-1: #{#201f23};
+  --feedback-color-2: #{#201f23cc};
+  --feedback-color-3: #{#201f2300};
+  --table-background-color: #{$grey-dk-250};
+  --search-background-color: #{$grey-dk-250};
+  --search-result-preview-color: #{$grey-dk-000};
+  --border-color: #{$grey-dk-200};
+  --footer-color: #{$grey-dk-000};
+  --prev-next-color: #{$grey-dk-250};
+  --prev-next-font-color: #{$white};
+  --prev-next-arrow-color: #{$blue-000};
+  --link-color: #{$blue-000};
+  --zeroclipboard-is-hover: #{darken($blue-000, 2%)};
+  --base-button-color: #{$grey-dk-250};
+  --zeroclipboard-is-active-1: #{darken($grey-dk-250, 1%)};
+  --zeroclipboard-is-active-3: #{darken($grey-dk-250, 3%)};
+  --zeroclipboard-is-active-4: #{darken($blue-000, 4%)};
+}
+
+```
+{% endraw %}
+
+
+그리고 이전에 값을 사용한 scss 파일들을 모두 찾아 새로 정의한 값으로 변경해주었습니다.
+
+
+{% raw %}
+```
+scss
+// 변경 전
+@include mq(md) {
+  display: flex;
+  justify-content: space-between;
+  height: $header-height;
+  background-color: $body-background-color;
+  border-bottom: $border $border-color;
+}
+
+// 변경 후
+@include mq(md) {
+  display: flex;
+  justify-content: space-between;
+  height: $header-height;
+  background-color: var(--body-background-color);
+  border-bottom: $border var(--border-color);
+}
+
+```
+{% endraw %}
+
+
+마지막으로 토글 버튼 클릭을 담당하는 자바스크립트 코드를 수정했습니다.
+
+
+해당 기능은 CSS 로드 후 빠르게 최대한 빠르게 실행되어야 하므로 자바스크립트 파일로 따로 분리 후 head.html에 가장 먼저 배치했습니다.
+
+
+`assets/js/dark-theme.js`
+
+
+{% raw %}
+```
+javascript
+(function(jtd, undefined) {
+  jtd.addEvent = function(el, type, handler) {
+    if (el.attachEvent) el.attachEvent("on" + type, handler)
+    else el.addEventListener(type, handler)
+  }
+
+  function darkMode() {
+    const toggleDarkMode = document.getElementById("theme-toggle")
+
+    function dark() {
+      document.body.setAttribute("data-theme", "dark")
+      toggleDarkMode.innerHTML = `<svg width="18px" height="18px"><use href="#svg-moon"></use></svg>`
+      localStorage.setItem("theme", "dark")
+    }
+
+    function light() {
+      document.body.setAttribute("data-theme", "light")
+      toggleDarkMode.innerHTML = `<svg width="18px" height="18px"><use href="#svg-sun"></use></svg>`
+      localStorage.setItem("theme", "light")
+    }
+
+    function getTheme() {
+      return document.body.getAttribute("data-theme") === "dark" ? "dark" : "light"
+    }
+
+    if (localStorage.getItem("theme") === "dark") {
+      dark()
+    } else {
+      light()
+    }
+
+    jtd.addEvent(toggleDarkMode, "click", function() {
+      const currentTheme = getTheme()
+      const newTheme = currentTheme === "dark" ? "light" : "dark"
+      if (newTheme === "dark") {
+        dark()
+      } else {
+        light()
+      }
+    })
+  }
+
+  darkMode()
+})(window.jtd = window.jtd || {})
+
+```
+{% endraw %}
+
+
+`_includes/head.html`
+
+
+{% raw %}
+```
+html
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="3gB9dKJy3OEOfBDFjyygUv7UEtbCLSaSsj1iRgGMLqM" />
+  <meta name="naver-site-verification" content="3c1362974d453b6fe1fdd5089325e29980b1369e" />
+
+  {% include_cached favicon.html %}
+
+  <link rel="stylesheet" href="{{ '/assets/css/just-the-docs.css' | relative_url }}">
+  <script defer src="{{ '/assets/js/dark-theme.js' | relative_url }}"></script>
+  <script defer src="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}"></script>
+  <script defer src="{{ '/assets/js/vendor/lunr.stemmer.support.min.js' | relative_url }}"></script>
+  <script defer src="{{ '/assets/js/vendor/lunr.multi.min.js' | relative_url }}"></script>
+  <script defer src="{{ '/assets/js/vendor/lunr.ko.min.js' | relative_url }}"></script>
+  <script defer src="{{ '/assets/js/fslightbox.js' | relative_url }}"></script>
+  <script defer src="{{ '/assets/js/lazysizes.min.js' | relative_url }}"></script>
+  <script defer src="{{ '/assets/js/just-the-docs.js' | relative_url }}"></script>
+
+  {% seo %}
+</head>
+
+```
+{% endraw %}
+
+
+적용 후 위에서 발생한 이슈가 모두 사라진 것을 확인할 수 있습니다.
+
+
+## 수정 - 다크모드 적용 후 캐시가 만료되면 새로고침 시 깜빡임 이슈
+
+
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Just%20The%20Docs%20%EB%8B%A4%ED%81%AC%20%EB%AA%A8%EB%93%9C%20%EA%B0%9C%EC%84%A0/3.webp" %}
+
+
+## 수정 - 다크모드 적용할 때마다 CSS 로드 이슈
+
+
+{% include lazyload.html image_src="https://devshjeon-blog-images.s3.ap-northeast-2.amazonaws.com/_images/%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9D%B8%20%EB%B8%94%EB%A1%9C%EA%B7%B8/Just%20The%20Docs%20%EB%8B%A4%ED%81%AC%20%EB%AA%A8%EB%93%9C%20%EA%B0%9C%EC%84%A0/4.webp" %}
+
