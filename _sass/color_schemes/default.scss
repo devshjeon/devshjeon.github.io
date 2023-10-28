@@ -1,4 +1,4 @@
-html[data-theme="light"] {
+body[data-theme="light"] {
   --body-background-color: #{$white};
   --body-heading-color: #{$grey-dk-300};
   --body-text-color: #{$grey-dk-100};
@@ -27,7 +27,7 @@ html[data-theme="light"] {
   --zeroclipboard-is-active-4: #{darken($blue-100, 4%)};
 }
 
-html[data-theme="dark"] {
+body[data-theme="dark"] {
   --body-background-color: #{$grey-dk-300};
   --body-heading-color: #{$grey-lt-000};
   --body-text-color: #{$grey-lt-300};

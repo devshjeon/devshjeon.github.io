@@ -510,50 +510,6 @@ function activateNav() {
   }
 }
 
-function trans() {
-  document.documentElement.classList.add('transition');
-  window.setTimeout(() => {
-    document.documentElement.classList.remove('transition');
-  }, 1000)
-}
-
-function darkMode() {
-  const toggleDarkMode = document.getElementById("theme-toggle")
-  function dark() {
-    trans()
-    document.documentElement.setAttribute('data-theme', 'dark')
-    toggleDarkMode.innerHTML = `<svg width="18px" height="18px"><use href="#svg-moon"></use></svg>`
-    localStorage.setItem("theme", 'dark')
-  }
-
-  function light() {
-    trans()
-    document.documentElement.setAttribute('data-theme', 'light')
-    toggleDarkMode.innerHTML = `<svg width="18px" height="18px"><use href="#svg-sun"></use></svg>`
-    localStorage.setItem("theme", 'light')
-  }
-
-  function getTheme() {
-    return document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light"
-  }
-
-  if (localStorage.getItem("theme") === "dark") {
-    dark()
-  } else {
-    light()
-  }
-
-  jtd.addEvent(toggleDarkMode, "click", function() {
-    const currentTheme = getTheme()
-    const newTheme = currentTheme === "dark" ? "light" : "dark"
-    if (newTheme === 'dark') {
-      dark()
-    } else {
-      light()
-    }
-  })
-}
-
 function tagManager() {
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -581,7 +537,6 @@ jtd.onReady(function(){
   initSearch();
   activateNav();
   scrollNav();
-  darkMode();
   {%- if site.ga_tracking != nil %}
   {% assign ga_tracking_ids = site.ga_tracking | split: "," %}
     loadScript('https://www.googletagmanager.com/gtag/js?id={{ ga_tracking_ids.first }}')
