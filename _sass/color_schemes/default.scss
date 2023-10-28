@@ -1,0 +1,57 @@
+html[data-theme="light"] {
+  --body-background-color: #{$white};
+  --body-heading-color: #{$grey-dk-300};
+  --body-text-color: #{$grey-dk-100};
+  --nav-child-link-color: #{$grey-dk-100};
+  --sidebar-color: #{$grey-lt-000};
+  --btn-primary-color: #{$purple-100};
+  --code-background-color: #{$grey-lt-000};
+  --code-linenumber-color: #{#dee2f7};
+  --feedback-color: #{darken($grey-lt-000, 3%)};
+  --feedback-color-1: #{#ebedf5};
+  --feedback-color-2: #{#ebedf5cc};
+  --feedback-color-3: #{#ebedf500};
+  --table-background-color: #{$white};
+  --search-background-color: #{$white};
+  --search-result-preview-color: #{$grey-dk-000};
+  --border-color: #{$grey-lt-100};
+  --footer-color: #{$grey-dk-100};
+  --prev-next-color: #{$grey-lt-000};
+  --prev-next-font-color: #{$grey-dk-200};
+  --prev-next-arrow-color: #{$blue-100};
+  --link-color: #{$blue-100};
+  --zeroclipboard-is-hover: #{darken($blue-100, 2%)};
+  --base-button-color: #{#f7f7f7};
+  --zeroclipboard-is-active-1: #{darken(#f7f7f7, 1%)};
+  --zeroclipboard-is-active-3: #{darken(#f7f7f7, 3%)};
+  --zeroclipboard-is-active-4: #{darken($blue-100, 4%)};
+}
+
+html[data-theme="dark"] {
+  --body-background-color: #{$grey-dk-300};
+  --body-heading-color: #{$grey-lt-000};
+  --body-text-color: #{$grey-lt-300};
+  --nav-child-link-color: #{$grey-dk-000};
+  --sidebar-color: #{$grey-dk-300};
+  --btn-primary-color: #{$blue-200};
+  --code-background-color: #{#31343f};
+  --code-linenumber-color: #{#dee2f7};
+  --feedback-color: #{darken($grey-dk-300, 3%)};
+  --feedback-color-1: #{#201f23};
+  --feedback-color-2: #{#201f23cc};
+  --feedback-color-3: #{#201f2300};
+  --table-background-color: #{$grey-dk-250};
+  --search-background-color: #{$grey-dk-250};
+  --search-result-preview-color: #{$grey-dk-000};
+  --border-color: #{$grey-dk-200};
+  --footer-color: #{$grey-dk-000};
+  --prev-next-color: #{$grey-dk-250};
+  --prev-next-font-color: #{$white};
+  --prev-next-arrow-color: #{$blue-000};
+  --link-color: #{$blue-000};
+  --zeroclipboard-is-hover: #{darken($blue-000, 2%)};
+  --base-button-color: #{$grey-dk-250};
+  --zeroclipboard-is-active-1: #{darken($grey-dk-250, 1%)};
+  --zeroclipboard-is-active-3: #{darken($grey-dk-250, 3%)};
+  --zeroclipboard-is-active-4: #{darken($blue-000, 4%)};
+}

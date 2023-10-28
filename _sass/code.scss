@@ -8,15 +8,15 @@
   & > code {
     padding: 0.2em 0.15em;
     font-weight: 400;
-    background-color: $code-background-color;
-    border: $border $border-color;
+    background-color: var(--code-background-color);
+    border: $border var(--border-color);
     border-radius: $border-radius;
   }
 }
 
 // Avoid appearance of dark border around visited code links in Safari
 a:visited code {
-  border-color: $border-color;
+  border-color: var(--border-color);
 }
 
 // Content structure for highlighted code blocks using fences or Liquid
@@ -72,7 +72,7 @@ div.listingblock > div.content,
 figure.highlight {
   margin-top: 0;
   margin-bottom: $sp-3;
-  background-color: $code-background-color;
+  background-color: var(--code-background-color);
   border-radius: $border-radius;
   box-shadow: none;
   -webkit-overflow-scrolling: touch;
@@ -87,13 +87,13 @@ figure.highlight {
     position: absolute;
     top: 0;
     right: 0;
-    border: $sp-3 solid $code-background-color;
-    background-color: $code-background-color;
-    color: $body-text-color;
+    border: $sp-3 solid var(--code-background-color);
+    background-color: var(--code-background-color);
+    color: var(--body-text-color);
     box-sizing: content-box;
 
     svg {
-      fill: $body-text-color;
+      fill: var(--body-text-color);
     }
 
     &:active {
@@ -180,7 +180,7 @@ figure.highlight {
 
     min-width: 0;
     padding: 0;
-    background-color: $code-background-color;
+    background-color: var(--code-background-color);
     border: 0;
   }
 
@@ -202,7 +202,7 @@ figure.highlight {
   padding: $sp-3;
   margin-bottom: $sp-3;
   overflow: auto;
-  border: 1px solid $border-color;
+  border: 1px solid var(--border-color);
   border-radius: $border-radius;
 
   + .highlighter-rouge,
@@ -211,9 +211,9 @@ figure.highlight {
   + figure.highlight {
     position: relative;
     margin-top: -$sp-4;
-    border-right: 1px solid $border-color;
-    border-bottom: 1px solid $border-color;
-    border-left: 1px solid $border-color;
+    border-right: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    border-left: 1px solid var(--border-color);
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
@@ -229,18 +229,18 @@ code.language-mermaid {
 // Override OneDarkJekyll Colors for Code Blocks
 .highlight,
 pre.highlight {
-  background: $code-background-color; // Code Background
+  background: var(--code-background-color); // Code Background
   // For Backwards Compatibility Before $code-linenumber-color was added
   @if variable-exists(code-linenumber-color) {
-    color: $code-linenumber-color; // Code Line Numbers
+    color: var(--code-linenumber-color); // Code Line Numbers
   } @else {
-    color: $body-text-color; // Code Line Numbers
+    color: var(--body-text-color); // Code Line Numbers
   }
 }
 
 // Override OneDarkJekyll Colors for Code Blocks
 .highlight pre {
-  background: $code-background-color; // Code Background
+  background: var(--code-background-color); // Code Background
 }
 
 // {% endraw %}

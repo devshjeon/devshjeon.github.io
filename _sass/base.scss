@@ -1,9 +1,9 @@
 // Base element style overrides
 // stylelint-disable selector-no-type, selector-max-type, selector-max-specificity, selector-max-id
 
-:root {
-  color-scheme: $color-scheme;
-}
+//:root {
+//  color-scheme: $color-scheme;
+//}
 
 * {
   box-sizing: border-box;
@@ -19,8 +19,8 @@ body {
   font-family: $body-font-family;
   font-size: inherit;
   line-height: $body-line-height;
-  color: $body-text-color;
-  background-color: $body-background-color;
+  color: var(--body-text-color);
+  background-color: var(--body-background-color);
   overflow-wrap: break-word;
 }
 
@@ -50,7 +50,7 @@ h6,
   margin-bottom: 1em;
   font-weight: 500;
   line-height: $body-heading-line-height;
-  color: $body-heading-color;
+  color: var(--body-heading-color);
 }
 
 p {
@@ -59,17 +59,17 @@ p {
 }
 
 a {
-  color: $link-color;
+  color: var(--link-color);
   text-decoration: none;
 }
 
 a:not([class]) {
   text-decoration: underline;
-  text-decoration-color: $border-color;
+  text-decoration-color: var(--border-color);
   text-underline-offset: 2px;
 
   &:hover {
-    text-decoration-color: rgba($link-color, 0.45);
+    text-decoration-color: rgba(var(--link-color), 0.45);
   }
 }
 
@@ -99,7 +99,7 @@ hr {
   height: 1px;
   padding: 0;
   margin: $sp-6 0;
-  background-color: $border-color;
+  background-color: var(--border-color);
   border: 0;
 }
 
@@ -111,5 +111,5 @@ blockquote {
   margin-block-start: 0;
   margin-inline-start: 0;
   padding-left: 1rem;
-  border-left: 3px solid $border-color;
+  border-left: 3px solid var(--border-color);
 }

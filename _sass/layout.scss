@@ -4,14 +4,14 @@
   z-index: 0;
   display: flex;
   flex-wrap: wrap;
-  background-color: $sidebar-color;
+  background-color: var(--sidebar-color);
 
   @include mq(md) {
     flex-flow: column nowrap;
     position: fixed;
     width: $nav-width-md;
     height: 100%;
-    border-right: $border $border-color;
+    border-right: $border var(--border-color);
     align-items: flex-end;
   }
 
@@ -54,14 +54,14 @@
 .main-header {
   z-index: 0;
   display: none;
-  background-color: $sidebar-color;
+  background-color: var(--sidebar-color);
 
   @include mq(md) {
     display: flex;
     justify-content: space-between;
     height: $header-height;
-    background-color: $body-background-color;
-    border-bottom: $border $border-color;
+    background-color: var(--body-background-color);
+    border-bottom: $border var(--border-color);
   }
 
   &.nav-open {
@@ -107,7 +107,7 @@
   @include mq(md) {
     height: $header-height;
     max-height: $header-height;
-    border-bottom: $border $border-color;
+    border-bottom: $border var(--border-color);
   }
 }
 
@@ -120,7 +120,7 @@
   align-items: center;
   padding-top: $sp-3;
   padding-bottom: $sp-3;
-  color: $body-heading-color;
+  color: var(--body-heading-color);
   @include fs-6;
 
   @include mq(md) {
@@ -157,17 +157,17 @@
 .site-title:hover {
   background-image: linear-gradient(
     -90deg,
-    rgba($feedback-color, 1) 0%,
-    rgba($feedback-color, 0.8) 80%,
-    rgba($feedback-color, 0) 100%
+    var(--feedback-color-1) 0%,
+    var(--feedback-color-2) 80%,
+    var(--feedback-color-3) 100%
   );
 }
 
 .site-button:hover {
   background-image: linear-gradient(
     -90deg,
-    rgba($feedback-color, 1) 0%,
-    rgba($feedback-color, 0.8) 100%
+    var(--feedback-color-1) 0%,
+    var(--feedback-color-3) 100%
   );
 }
 
@@ -194,7 +194,7 @@ body {
   left: 0;
   padding-top: $sp-4;
   padding-bottom: $sp-4;
-  color: $footer-color;
+  color: var(--footer-color);
   @include fs-2;
 
   @include mq(md) {
@@ -206,7 +206,7 @@ body {
 .icon {
   width: $sp-5;
   height: $sp-5;
-  color: $link-color;
+  color: var(--link-color);
 }
 
 
@@ -287,7 +287,6 @@ body {
   }
 }
 
-
 .prev-next {
   display:flex;
   margin-left:auto;
@@ -333,7 +332,7 @@ body {
 .prev-next-a {
   cursor:pointer;
   border-radius: 0.5rem;
-  background: $prev-next-color;
+  background: var(--prev-next-color);
   width: 100%;
   padding-left:1rem;
   padding-right:1rem;
@@ -351,19 +350,19 @@ body {
   align-items: center;
   justify-content: center;
   font-size:1.5rem;
-  color: $prev-next-arrow-color;
+  color: var(--prev-next-arrow-color);
 }
 
 .prev-next-header {
   font-size:0.75rem;
   font-weight: bold;
-  color:$prev-next-font-color;
+  color: var(--prev-next-font-color);
 }
 
 .prev-next-body {
   width: 100%;
   font-size: 1.125rem;
-  color:$prev-next-font-color;
+  color: var(--prev-next-font-color);
   line-height: 1.15;
   text-overflow: ellipsis;
   white-space: nowrap;

@@ -58,9 +58,9 @@
       &.active {
         background-image: linear-gradient(
           -90deg,
-          rgba($feedback-color, 1) 0%,
-          rgba($feedback-color, 0.8) 80%,
-          rgba($feedback-color, 0) 100%
+          var(--feedback-color-1) 0%,
+          var(--feedback-color-2) 80%,
+          var(--feedback-color-3) 100%
         );
       }
     }
@@ -74,7 +74,7 @@
       width: $nav-list-item-height-sm;
       height: $nav-list-item-height-sm;
       padding: #{$nav-list-item-height-sm * 0.25};
-      color: $link-color;
+      color: var(--link-color);
 
       @include mq(md) {
         width: $nav-list-item-height;
@@ -85,8 +85,8 @@
       &:hover {
         background-image: linear-gradient(
           -90deg,
-          rgba($feedback-color, 1) 0%,
-          rgba($feedback-color, 0.8) 100%
+          var(--feedback-color-1) 0%,
+          var(--feedback-color-3) 100%
         );
       }
 
@@ -106,11 +106,11 @@
         position: relative;
 
         .nav-list-link {
-          color: $nav-child-link-color;
+          color: var(--nav-child-link-color);
         }
 
         .nav-list-expander {
-          color: $nav-child-link-color;
+          color: var(--nav-child-link-color);
         }
       }
     }
@@ -136,7 +136,7 @@
   font-weight: 600;
   text-align: start;
   text-transform: uppercase;
-  border-bottom: $border $border-color;
+  border-bottom: $border var(--border-color);
   @include fs-2;
 
   @include mq(md) {
@@ -159,11 +159,11 @@
 
       > .nav-list-item {
         > .nav-list-link {
-          color: $link-color;
+          color: var(--link-color);
         }
 
         > .nav-list-expander {
-          color: $link-color;
+          color: var(--link-color);
         }
       }
     }
