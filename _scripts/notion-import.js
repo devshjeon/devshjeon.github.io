@@ -106,9 +106,6 @@ function replaceUrl(body, imageUrls, s3Urls) {
   return body
 }
 
-function slug(str) {
-  return str.replaceAll(" ", "-")
-}
 
 function escapeCodeBlock(body) {
   const regex = /```([\s\S]*?)```/g
@@ -151,7 +148,7 @@ function convertLazyImage(body) {
   })
   for (const r of response.results) {
     const id = r.id
-
+    let pk = r.properties?.["ID"]?.["unique_id"]?.["number"]
     // 최상위폴더
     let upUpFolder = ""
     let pUpUpFolder = r.properties?.["최상위폴더"]?.["rich_text"]
@@ -182,8 +179,6 @@ function convertLazyImage(body) {
     // 작성일
     let publishedDate = moment(r.created_time).tz("Asia/Seoul").format("YYYY-MM-DD")
     let modifiedDate = moment(r.last_edited_time).tz("Asia/Seoul").format("YYYY-MM-DD")
-
-    let permalink = ""
     let header = `---
 layout: default
 title: ${title}
@@ -199,21 +194,17 @@ nav_order: ${navOrder}`
       if (upFolder) {
         header += `
 parent: ${upUpFolder}`
-        permalink += slug(upUpFolder)
       }
     } else {
       header += `
 grand_parent: ${upUpFolder}`
-      permalink += slug(upUpFolder)
       if (upFolder) {
         header += `
 parent: ${upFolder}`
-        permalink += "/" + slug(upUpFolder)
       }
     }
-    permalink += "/" + slug(title)
     header += `
-permalink: ${permalink}`
+permalink: '${pk}'`
     header += `
 ---`
 
@@ -238,7 +229,7 @@ permalink: ${permalink}`
     body = convertLazyImage(body)
 
     //writing to file
-    const fTitle = `${title}.md`
+    const fTitle = `${pk}.md`
     fs.writeFile(path.join(folderPath, fTitle), header + body, (err) => {
       if (err) {
         console.log(err)
