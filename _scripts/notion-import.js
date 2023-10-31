@@ -109,7 +109,10 @@ function replaceUrl(body, imageUrls, s3Urls) {
 }
 
 function generateSitemap(links) {
-  const stream = new SitemapStream({ hostname: "https://devshjeon.github.io/" })
+  const stream = new SitemapStream({
+    hostname: "https://devshjeon.github.io/",
+    lastmodDateOnly: true,
+  })
   streamToPromise(Readable.from(links).pipe(stream)).then((data) => {
       fs.writeFile("sitemap.xml", data.toString(), (err) => {
         if (err) {
@@ -161,11 +164,13 @@ function convertLazyImage(body) {
   for (const r of response.results) {
     const id = r.id
     let pk = r.properties?.["ID"]?.["unique_id"]?.["number"]
+    let modifiedDate = moment(r.last_edited_time).tz("Asia/Seoul").format("YYYY-MM-DD")
 
     // 사이트맵
     links.push(
       {
         url: `/${pk}`,
+        lastmod: modifiedDate,
         changefreq: changeFreq,
         priority,
       },
@@ -205,7 +210,6 @@ function convertLazyImage(body) {
 
       // 작성일
       let publishedDate = moment(r.created_time).tz("Asia/Seoul").format("YYYY-MM-DD")
-      let modifiedDate = moment(r.last_edited_time).tz("Asia/Seoul").format("YYYY-MM-DD")
 
       let header = `---
 layout: default
