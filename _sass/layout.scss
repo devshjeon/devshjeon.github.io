@@ -245,7 +245,7 @@ body {
   height: 100%;
   background: var(--bg-color);
   opacity: 1;
-  transition: opacity 1s;
+  transition: opacity 0.5s;
 }
 .skeleton_loading.fade {
   opacity: 0;
