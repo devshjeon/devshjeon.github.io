@@ -31,9 +31,9 @@ If a user is using a custom mermaid file and doesn't specify a version, we defau
 {% else %}
 
 {% if site.mermaid.path %}
-  <script src="{{ site.mermaid.path | relative_url }}"></script>
+  <script defer src="{{ site.mermaid.path | relative_url }}"></script>
 {% else %}
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@{{ site.mermaid.version }}/dist/mermaid.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mermaid@{{ site.mermaid.version }}/dist/mermaid.min.js"></script>
 {% endif %}
 
 <script>
