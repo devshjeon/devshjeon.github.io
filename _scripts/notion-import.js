@@ -126,7 +126,7 @@ function generateSitemap(links) {
 function escapeCodeBlock(body) {
   const regex = /```([\s\S]*?)```/g
   return body.replace(regex, function(match, htmlBlock) {
-    return "{% raw %}\n```\n" + htmlBlock + "\n```\n{% endraw %}"
+    return "{% raw %}\n```" + htmlBlock + "```\n{% endraw %}"
   })
 }
 
