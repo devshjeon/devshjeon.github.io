@@ -533,6 +533,7 @@ function loadScript(url) {
 }
 
 jtd.onReady(function(){
+  hljs.highlightAll();
   initNav();
   initSearch();
   activateNav();

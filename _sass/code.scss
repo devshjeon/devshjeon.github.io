@@ -125,6 +125,7 @@ figure.highlight {
     padding: $sp-3;
     margin: 0;
     border: 0;
+    border-radius: 0.5rem;
   }
 
   #{$pre-select},
@@ -132,6 +133,7 @@ figure.highlight {
     padding: 0;
     margin: 0;
     border: 0;
+    border-radius: 0.5rem;
   }
 }
 
