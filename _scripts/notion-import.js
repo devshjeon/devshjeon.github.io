@@ -158,26 +158,21 @@ function convertLazyImage(body) {
   })
 
   const links = []
-  const priority = 0.8
-  const changeFreq = "daily"
 
   for (const r of response.results) {
     const id = r.id
     let pk = r.properties?.["ID"]?.["unique_id"]?.["number"]
+
+    // 배포
+    let isPublished = r.properties?.["배포"]?.["checkbox"] || false
     let modifiedDate = moment(r.last_edited_time).tz("Asia/Seoul").format("YYYY-MM-DD")
 
     // 사이트맵
     links.push(
       {
         url: `/${pk}`,
-        lastmod: modifiedDate,
-        changefreq: changeFreq,
-        priority,
       },
     )
-
-    // 배포
-    let isPublished = r.properties?.["배포"]?.["checkbox"] || false
 
     // 배포인 경우에만 파일 생성
     if (isPublished) {
