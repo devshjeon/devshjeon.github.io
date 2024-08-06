@@ -28,4 +28,4 @@ node_modules
 *.gem
 .bundle
 .ruby-version
-.idea/watcherTasks.xml
+.idea
